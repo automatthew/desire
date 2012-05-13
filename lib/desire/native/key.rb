@@ -3,6 +3,10 @@ class Desire
   # This mixin assumes that #client and #key are defined.
   module Key
 
+    def watch
+      client.watch(key)
+    end
+
     def exists?
       client.exist(key)
     end

@@ -1,6 +1,7 @@
 class Desire
 
   class SortedHash
+    include Composite
 
     attr_reader :client, :index_key
 
@@ -15,7 +16,7 @@ class Desire
     end
 
     def set(key, value, score)
-      client.multi do
+      multi do
         @hash.set(key, value)
         @index.add(score, key)
       end
@@ -25,6 +26,9 @@ class Desire
       @hash.set(key, value)
     end
 
+    # TODO: see if all the score-getting-and-locking
+    # can be encapsulated in the SortedSet class.
+
     # Uses optimistic locking to make sure the value is
     # added with a score higher than any previously added.
     # It returns the score actually used to set the value.
@@ -33,9 +37,10 @@ class Desire
       # times if the WATCH makes us bail.
       retry_counter = 0
       while retry_counter < @retry_limit
-        # Have to put the watch inside the retry loop because calling EXEC clears all watches.
-        # See #226
-        client.watch(index_key)
+        # Have to put the watch inside the retry loop because
+        # calling EXEC clears all watches.
+        # TODO: maybe we want to have Composite#watch(@index) ??
+        @index.watch
 
         # get highest score from the Sorted Set and increment the
         # input score if necessary.
@@ -74,7 +79,7 @@ class Desire
     end
 
     def delete(*keys)
-      client.multi do
+      multi do
         keys.each do |k|
           @hash.delete(k)
           @index.delete(k)
@@ -95,7 +100,7 @@ class Desire
       # Remove the keys from the index
       @index.delete_by_score(start, stop)
       # Remove the values from the hash
-      client.multi do
+      multi do
         keys.each do |key|
           @hash.delete(key)
         end
@@ -116,7 +121,7 @@ class Desire
       @index.delete_by_rank(0, range_stop)
 
       # Remove the values from the hash
-      client.multi do
+      multi do
         keys.each do |key|
           @hash.delete(key)
         end
