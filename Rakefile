@@ -34,6 +34,10 @@ module TaskHelpers
 
     puts "rspec #{flags.join(' ')}"
     require "rspec"
+    RSpec.configure do |config|
+      config.mock_framework = :rspec
+    end
+
     status = RSpec::Core::Runner.run(flags)
     if status != 0
       exit(status)

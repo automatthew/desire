@@ -20,7 +20,7 @@ class Desire
     end
 
     def delete(member)
-      client.zrem(member)
+      client.zrem(key, member)
     end
 
     def clear

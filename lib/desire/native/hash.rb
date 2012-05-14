@@ -16,6 +16,10 @@ class Desire
       client.hkeys(key)
     end
 
+    def has_key?(field)
+      client.hexists(key, field)
+    end
+
     def get(field)
       client.hget(key, field)
     end

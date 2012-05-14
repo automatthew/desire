@@ -3,13 +3,14 @@ class Desire
   class SortedHash
     include Composite
 
-    attr_reader :client, :index_key
+    attr_reader :client, :hash_key, :index_key
 
     def initialize(client, key, options={})
       @client = client
-      @hash = Desire::Hash.new(client, "#{key}.store")
+      @hash_key = "#{key}.store"
+      @hash = Desire::Hash.new(client, @hash_key)
       @index_key = "#{key}.index"
-      @index = Desire::SortedSet.new(client, "#{key}.index")
+      @index = Desire::SortedSet.new(client, @index_key)
       @retry_limit = options[:retries] || 16
       @size_limit = options[:size_limit]
       @ttl = options[:ttl]
@@ -23,11 +24,15 @@ class Desire
     end
 
     def update(key, value)
-      @hash.set(key, value)
+      if @hash.has_key?(key)
+        @hash.set(key, value)
+      else
+        raise ArgumentError, "Cannot update nonexistent key: #{key}"
+      end
     end
 
-    # TODO: see if all the score-getting-and-locking
-    # can be encapsulated in the SortedSet class.
+    ## TODO: see if all the score-getting-and-locking
+    ## can be encapsulated in the SortedSet class.
 
     # Uses optimistic locking to make sure the value is
     # added with a score higher than any previously added.
@@ -66,16 +71,16 @@ class Desire
       raise "Optimistic locking failed too many times"
     end
 
-    alias_method :<<, :append
+    #alias_method :<<, :append
 
     def get(key)
       @hash.get(key)
     end
 
     def get_with_score(key)
-      data = @hash.get(key)
-      @index.score(key)
-      {:data => data, :score => score}
+      if data = @hash.get(key)
+        {:data => data, :score => @index.score(key)}
+      end
     end
 
     def delete(*keys)
@@ -85,6 +90,7 @@ class Desire
           @index.delete(k)
         end
       end
+      nil
     end
 
     def remove_by_range(start=nil, stop=nil)
