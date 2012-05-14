@@ -7,4 +7,3 @@ $LOAD_PATH.unshift("#{DESIRE_ROOT}/lib")
 
 require "desire"
 
-

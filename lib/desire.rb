@@ -8,9 +8,14 @@ require "desire/sorted_hash"
 
 class Desire
 
+  attr_reader :client, :scope
   def initialize(client, options={})
     @client = client
     @scope = options[:scope]
+  end
+
+  def hash(key)
+    Hash.new(client, "#{scope}.#{key}")
   end
 
 end
