@@ -38,8 +38,9 @@ class Desire
     end
 
     def range_by_score(start, stop, options={})
-      if options.delete(:reverse)
-        client.zrevrangebyscore(key, start, stop, options)
+      if options.has_key?(:reverse)
+        options.delete(:reverse)
+        client.zrevrangebyscore(key, stop, start, options)
       else
         client.zrangebyscore(key, start, stop, options)
       end
