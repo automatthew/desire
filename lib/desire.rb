@@ -1,3 +1,6 @@
+
+require "desire/numeric_helpers"
+
 require "desire/native/key"
 require "desire/native/hash"
 require "desire/native/set"

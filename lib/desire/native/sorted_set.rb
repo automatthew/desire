@@ -2,6 +2,7 @@ class Desire
 
   class SortedSet
     include Desire::Key
+    include Desire::NumericHelpers
     include Enumerable
 
     attr_reader :client, :key
