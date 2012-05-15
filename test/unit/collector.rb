@@ -6,9 +6,6 @@ class TestClass
 end
 
 describe "Desire::Collector" do
-  before(:each) do
-    #client.flushall
-  end
 
   describe "Instantiation" do
 
