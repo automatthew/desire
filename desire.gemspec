@@ -11,7 +11,7 @@ end
 
 Gem::Specification.new do |s|
   s.name        = 'desire'
-  #s.version     = $version
+  s.version     = "0.1"
   s.summary     = "Ruby client for spire.io"
   s.description = <<-EOF
 		Wrappers for Redis.
