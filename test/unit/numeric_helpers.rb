@@ -1,6 +1,6 @@
 include Desire::NumericHelpers
 
-describe "#to_number" do
+describe "NumericHelpers#to_number" do
 
   specify "converts a string representation of an integer into an Integer" do
     %w[ 1 2 4 8 16 32 64 357 11 13 17 19 23 29 ].each do |string|
