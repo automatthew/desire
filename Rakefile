@@ -23,6 +23,7 @@ module TaskHelpers
   def self.rspec(options)
     flags = %w[
       --color
+      --format documentation
     ]
     if file = options[:require]
       flags += [ "--require", file ]
