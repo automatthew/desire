@@ -58,6 +58,12 @@ class Desire
       client.zincrby(key, increment, value)
     end
 
+    def multi_incrby(properties)
+      properties.each do |name, value|
+        self.incrby(value, name)
+      end
+    end
+
     def last(options={})
       client.zrange(key, -1, -1, options)
     end

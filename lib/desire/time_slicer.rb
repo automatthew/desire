@@ -18,7 +18,7 @@ class Desire
 
     def get(time)
       time_string = time.strftime(@format_string)
-      @collector.instance(time_string)
+      @collector.get(time_string)
     end
 
 
