@@ -17,10 +17,14 @@ class Desire
     end
 
     def set(key, value, score)
-      multi do
+      success = multi do
         @hash.set(key, value)
         @index.add(score, key)
       end
+      if success && @size_limit && (@size_limit > 0) && (self.size > @size_limit)
+        self.truncate(@size_limit)
+      end
+      success
     end
 
     def update(key, value)
@@ -57,15 +61,10 @@ class Desire
         end
 
         if set(key, value, score)
-          if @size_limit && (@size_limit > 0) && (self.size > @size_limit)
-            self.truncate(@size_limit)
-          end
-
           return score
         else
           retry_counter += 1
         end
-
       end
 
       raise "Optimistic locking failed too many times"

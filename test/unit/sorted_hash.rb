@@ -241,6 +241,37 @@ describe "Desire::SortedHash" do
 
     end
 
+    describe "Size limit" do
+
+      specify "enforced on #set" do
+        @limited = Desire::SortedHash.new(client, "base_key", :size_limit => 5)
+
+        (1..7).each do |i|
+          @limited.set("key#{i}", "value", i)
+        end
+
+        client.zcard(@limited.index_key).should == 5
+        client.zcount(@limited.index_key, 0, 2).should == 0
+        client.zcount(@limited.index_key, 3, 7).should == 5
+        client.hkeys(@limited.hash_key).sort.should == ("key3".."key7").to_a
+      end
+
+      specify "enforced on #append" do
+        @limited = Desire::SortedHash.new(client, "base_key", :size_limit => 5)
+
+        (1..7).each do |i|
+          @limited.append("key#{i}", "value", i)
+        end
+
+        client.zcard(@limited.index_key).should == 5
+        client.zcount(@limited.index_key, 0, 2).should == 0
+        client.zcount(@limited.index_key, 3, 7).should == 5
+        client.hkeys(@limited.hash_key).sort.should == ("key3".."key7").to_a
+      end
+
+    end
+
+
   end
 
 end
