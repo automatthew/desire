@@ -1,15 +1,3 @@
-
-def random_key
-  (0...8).map{65.+(rand(25)).chr}.join
-end
-
-def get_timestamp
-  (Time.now.to_f * 1000).floor * 1000
-end
-
-#require "redis"
-#client = Redis.new
-#client.select(3)
 client = MockRedis.new
 
 describe "Desire::SortedHash" do
@@ -20,16 +8,12 @@ describe "Desire::SortedHash" do
 
   describe "On instantiation" do
 
-    before(:all) do
-      @client = mock("unused Redis client")
-    end
-
     specify "does not use redis" do
-      Desire::SortedHash.new(@client, "namespace")
+      Desire::SortedHash.new(mock("unused Redis client"), "namespace")
     end
 
     specify "has methods for retrieving the redis keys it uses" do
-      sorted_hash = Desire::SortedHash.new(@client, "namespace")
+      sorted_hash = Desire::SortedHash.new(mock("unused Redis client"), "namespace")
       sorted_hash.index_key.should == "namespace.index"
       sorted_hash.hash_key.should == "namespace.store"
     end

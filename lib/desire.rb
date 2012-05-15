@@ -4,6 +4,8 @@ require "desire/native/set"
 require "desire/native/sorted_set"
 
 require "desire/composite"
+require "desire/collector"
+require "desire/time_slicer"
 require "desire/sorted_hash"
 
 class Desire

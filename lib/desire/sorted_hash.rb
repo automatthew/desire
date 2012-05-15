@@ -71,7 +71,7 @@ class Desire
       raise "Optimistic locking failed too many times"
     end
 
-    #alias_method :<<, :append
+    alias_method :<<, :append
 
     def get(key)
       @hash.get(key)
