@@ -21,6 +21,10 @@ class Desire
       @collector.get(time_string)
     end
 
+    def keys
+      @collector.keys
+    end
+
 
   end
 

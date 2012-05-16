@@ -51,8 +51,16 @@ class Desire
       client.zrange(key, start, stop)
     end
 
+    ## TODO: imitate Array#slice
+    #def slice(*args)
+    #end
+
     def score(member)
       client.zscore(key, member)
+    end
+
+    def count(start, stop)
+      client.zcount(key, start, stop)
     end
 
     def incrby(increment, value)
