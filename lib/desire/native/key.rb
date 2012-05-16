@@ -8,7 +8,7 @@ class Desire
     end
 
     def exists?
-      client.exist(key)
+      client.exists(key)
     end
 
     def del
