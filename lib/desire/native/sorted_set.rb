@@ -12,8 +12,34 @@ class Desire
       @key = key
     end
 
+    def union!(input_keys, options={})
+      client.zunionstore(key, input_keys, options)
+    end
+
+    def inter!(input_keys, options={})
+      client.zinterstore(key, input_keys, options)
+    end
+
     def members
       client.zrange(key, 0, -1)
+    end
+
+    def card
+      client.zcard(key)
+    end
+
+    alias_method :size, :card
+
+    def scores
+      out = []
+      array = self.range(0, -1, :withscores => true)
+      array.each_slice(2) {|account_key, value| out << to_number(value) }
+      out
+    end
+
+    def to_hash
+      array = self.range(0, -1, :withscores => true)
+      ::Hash[*array]
     end
 
     def add(score, value)
@@ -47,8 +73,8 @@ class Desire
       end
     end
 
-    def range(start, stop)
-      client.zrange(key, start, stop)
+    def range(start, stop, options={})
+      client.zrange(key, start, stop, options)
     end
 
     ## TODO: imitate Array#slice
