@@ -18,6 +18,46 @@ task "test:unit" do
 end
 
 
+desc "run yardoc"
+task "doc" do
+	sh "yard --output docs"
+end
+
+# Updates GITHUB PAGES
+desc 'Update gh-pages branch'
+task 'docs:pages' => ['docs/', 'docs/.git', "doc"] do
+  rev = `git rev-parse --short HEAD`.strip
+  Dir.chdir 'docs' do
+    last_commit = `git log -n1 --pretty=oneline`.strip
+    message = "rebuild pages from #{rev}"
+    result = last_commit =~ /#{message}/
+    # generating yardocs causes updates/modifications in all the docs
+    # even when there are changes in the docs (it updates the date/time)
+    # So we check if the last commit message if the hash is the same do NOT update the docs
+    if result
+      verbose { puts "nothing to commit" }
+    else
+      sh "git add ."
+      sh "git commit -m 'rebuild pages from #{rev}'" do |ok,res|
+        if ok
+          verbose { puts "gh-pages updated" }
+          sh "git push -q origin HEAD:gh-pages"
+        end
+      end
+    end
+  end
+end
+
+file 'docs/' do |f|
+  Dir.mkdir(f.name) if !File.exists?(f.name)
+end
+
+# Update the pages/ directory clone
+file 'docs/.git' => ['docs/', '.git/refs/heads/gh-pages'] do |f|
+    sh "cd docs && git init -q && git remote add origin git@github.com:spire-io/desire.git" if !File.exist?(f.name)
+    sh "cd docs && git fetch -q origin && git reset -q --hard origin/gh-pages && touch ."
+end
+
 
 module TaskHelpers
 
