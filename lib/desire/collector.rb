@@ -8,7 +8,7 @@ class Desire
       @klass = klass
       @base_key = base_key
       @index_key = "#{@base_key}.index"
-      @index = Desire::Set.new(client, @index_key)
+      @index = Native::Set.new(client, @index_key)
     end
 
     def add(name)

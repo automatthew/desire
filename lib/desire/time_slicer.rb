@@ -41,7 +41,7 @@ class Desire
         @range = range
         @aggregates_key = "#{@slicer.key}.aggregates"
         @union_key = "#{@slicer.key}#{range_string}"
-        @zset = SortedSet.new(@slicer.client, @union_key)
+        @zset = Native::SortedSet.new(@slicer.client, @union_key)
       end
 
       def method_missing(name, *args, &block)

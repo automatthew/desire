@@ -18,7 +18,7 @@ class Desire
       @client = client
       @base_key = base_key
       @collector_key = "#{@base_key}.collector"
-      @collector = Collector.new(client, Desire::SortedSet, @collector_key)
+      @collector = Collector.new(client, Native::SortedSet, @collector_key)
     end
 
     def total

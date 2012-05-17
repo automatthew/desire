@@ -1,7 +1,7 @@
 
 require "desire/helpers"
 
-require "desire/native/key"
+require "desire/key"
 require "desire/native"
 require "desire/native/list"
 require "desire/native/hash"
@@ -28,10 +28,13 @@ class Desire
 
   # Define convenience methods for instantiating wrapper classes.
   {
-    :hash => Desire::Hash,
-    :list => Desire::List,
-    :set => Desire::Set,
-    :sorted_set => Desire::SortedSet,
+    # Native
+    :hash => Desire::Native::Hash,
+    :list => Desire::Native::List,
+    :set => Desire::Native::Set,
+    :sorted_set => Desire::Native::SortedSet,
+
+    # Composites
     :sorted_hash => Desire::SortedHash
   }.each do |name, klass|
     class_eval <<-EVAL, __FILE__, __LINE__ + 1

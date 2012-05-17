@@ -9,16 +9,17 @@ class Desire
       @client = client
 
       @hash_key = "#{key}.store"
-      @hash = Desire::Hash.new(client, @hash_key)
+      @hash = Native::Hash.new(client, @hash_key)
 
       @index_key = "#{key}.index"
-      @index = Desire::SortedSet.new(client, @index_key)
+      @index = Native::SortedSet.new(client, @index_key)
 
       @retry_limit = options[:retries] || 16
       @size_limit = options[:size_limit]
       @ttl = options[:ttl]
     end
 
+    # Add an element with the given key, value, and score.
     def set(key, value, score)
       success = multi do
         @hash.set(key, value)
@@ -30,6 +31,7 @@ class Desire
       success
     end
 
+    # Update an existing key without changing the score.
     def update(key, value)
       if @hash.has_key?(key)
         @hash.set(key, value)
@@ -41,9 +43,10 @@ class Desire
     ## TODO: see if all the score-getting-and-locking
     ## can be encapsulated in the SortedSet class.
 
-    # Uses optimistic locking to make sure the value is
-    # added with a score higher than any previously added.
-    # It returns the score actually used to set the value.
+    # Add the key/value to the SortedHash with either the supplied score or
+    # the previous highest score + 1.
+    # Uses optimistic locking to make sure the value is added with a score
+    # higher than any previously added. Returns the score actually used to set the value.
     def append(key, value, score)
       # attempt the transaction, retrying a limited number of
       # times if the WATCH makes us bail.
@@ -52,7 +55,7 @@ class Desire
         # Have to put the watch inside the retry loop because
         # calling EXEC clears all watches.
         # TODO: maybe we want to have Composite#watch(@index) ??
-        @index.watch
+        watch(@index)
 
         # get highest score from the Sorted Set and increment the
         # input score if necessary.
@@ -75,16 +78,22 @@ class Desire
 
     alias_method :<<, :append
 
+    # Retrieve the value only.
+    # @return [String]
     def get(key)
       @hash.get(key)
     end
 
+    # Retrieve the value and score.
+    # @return [{:data => value, :score => score}]
     def get_with_score(key)
       if data = @hash.get(key)
         {:data => data, :score => @index.score(key)}
       end
     end
 
+    # Delete one or more keys
+    # @return [nil]
     def delete(*keys)
       multi do
         keys.each do |k|
@@ -95,6 +104,10 @@ class Desire
       nil
     end
 
+    # Find and remove elements with scores between the
+    # start and stop parameters. Use the standard Redis "(" prefix and
+    # ")" suffix to switch between inclusive and exclusive.
+    # @return [SortedHash]
     def remove_by_range(start=nil, stop=nil)
       if !start and !stop
         throw "Must specify either start or stop"
@@ -117,10 +130,14 @@ class Desire
       self
     end
 
-    def remove_before(time)
-      remove_by_range(nil, time)
+    # Remove all elements with scores lower than the stop parameter.
+    # @return (see #remove_by_range)
+    def remove_before(stop)
+      remove_by_range(nil, stop)
     end
 
+    # Remove lowest ranked elements so that the SortedHash has exactly
+    # the number of elements specified by the length param.
     def truncate(length)
       range_stop = -1 - length
       # Get the keys to delete from the hash
@@ -137,17 +154,21 @@ class Desire
       self
     end
 
+    # @return [Integer]
     def size
       @hash.size
     end
 
+    # Retrieve the keys of all elements
+    # @return [Array]
     def keys
       @index.range(0, -1)
     end
 
+    # Delete both the Hash and SortedSet
     def clear
-      @hash.clear
-      @index.clear
+      @hash.del
+      @index.del
     end
 
     def values_by_range(start=nil, stop=nil, limit=nil, reverse=false)
@@ -162,10 +183,14 @@ class Desire
       end
     end
 
+    # Retrieve the values for the specified keys.
+    # @return [Array]
     def values_at(*keys)
       @hash.values_at(*keys)
     end
 
+    # Retrieve the keys for elements with scores in the specified range.
+    # @return [Array]
     def fields_by_range(start=nil, stop=nil, limit=nil, reverse=false)
       start = start ? "(#{start}" : '-inf'
       stop = stop ? "#{stop}" : "+inf"
@@ -175,9 +200,9 @@ class Desire
       @index.range_by_score(start, stop, options)
     end
 
-    def consistency_check
-      # TODO: something to verify that the ZSET and HASH are in sync
-    end
+    ## TODO: something to verify that the ZSET and HASH are in sync
+    #def consistency_check
+    #end
 
   end
 end
