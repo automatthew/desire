@@ -27,16 +27,32 @@ require "desire/sorted_hash"
 # The last reason also explains the lack of BLPOP and its pals in Desire::List.
 # TODO: Desire::Blocking ?
 #
-# Initialize Desire with a Redis client (duck typed to redis-rb)
+# You can instantiate Desire wrappers directly:
 #
-# Usage:
+#   hash = Desire::Hash.new(client, "some_key")
+#
+# Or use the convenience methods:
+#
+#   desire = Desire.new(client) # client is duck-typed to redis-rb behavior
+#   hash = desire.hash("some_key")
+#
+# Basic usage:
 #
 #   desire = Desire.new(redis_client)
 #   hash = desire.hash("some_key")
+#   hash.hset("one_two", "buckle my shoe") # exact native command
+#   hash.set("three_four", "shut the door") # same thing, but redundant 'h' prefix removed
 #
-# Includes Transaction, which provides #multi and #watch methods
-# so you can be sure you're using the right client at all times
-# in a transaction attempt.
+# Where possible and sensible, native wrappers alias the names of idiomatic Ruby methods
+# to the Redis equivalents
+#
+#   hash["three_four"] #=> "shut the door"
+#   hash["five_six"] = "pick up sticks"
+#   hash.values_at("one_two", "seven_eight") #=> ["buckle my shoe", nil]
+#
+# The base Desire class includes the Transaction mixin, which provides
+# #multi and #watch methods so you can be sure you're using the right client
+# at all times in a transaction attempt.
 #
 #   hash = desire.hash("smurf")
 #   set = desire.set("seven_dwarfs")
@@ -45,7 +61,11 @@ require "desire/sorted_hash"
 #     set.add("grumpy")
 #   end
 #
-# Desire's composite classes are initialized with a "base_key", i.e.
+# The composite classes provide useful combinations of native features.  The
+# composite that kicked off the whole project is Desire::SortedHash, which
+# combines a Hash for data storage with a SortedSet for ordered indexing.
+#
+# Composite classes are initialized with a "base_key", i.e.
 # a string that will serve as the prefix to the actual keys used
 # within the composite wrapper. A composite class claims the right to all keys
 # which begin with its base_key, so be careful not to use keys that may
@@ -71,7 +91,8 @@ class Desire
     :hash => Desire::Hash,
     :list => Desire::List,
     :set => Desire::Set,
-    :sorted_set => Desire::SortedSet
+    :sorted_set => Desire::SortedSet,
+    :sorted_hash => Desire::SortedHash
   }.each do |name, klass|
     class_eval <<-EVAL, __FILE__, __LINE__ + 1
       def #{name}(key)
