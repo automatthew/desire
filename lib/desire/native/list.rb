@@ -11,7 +11,7 @@ class Desire
     end
 
     COMMANDS = %w[
-      blpop brpop brpoplpush lindex linsert llen lpop lpush lpushx
+      lindex linsert llen lpop lpush lpushx
       lrange lrem lset ltrim rpop rpoplpush rpush rpushx
     ]
 
