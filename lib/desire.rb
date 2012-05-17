@@ -83,10 +83,6 @@ class Desire
     @scope = options[:scope]
   end
 
-  def redis_key(key)
-    @scope ? "#{scope}.#{key}" : key
-  end
-
   {
     :hash => Desire::Hash,
     :list => Desire::List,
@@ -96,7 +92,7 @@ class Desire
   }.each do |name, klass|
     class_eval <<-EVAL, __FILE__, __LINE__ + 1
       def #{name}(key)
-        #{klass}.new(client, redis_key(key))
+        #{klass}.new(client, key)
       end
     EVAL
   end
