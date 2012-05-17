@@ -16,6 +16,8 @@ class Desire
     # Aliases for idiomaticity
     alias_method :clear, :del
     alias_method :delete, :hdel
+    alias_method :[], :hget
+    alias_method :[]=, :hset
     alias_method :size, :hlen
     alias_method :values, :hvals
     alias_method :values_at, :hmget
