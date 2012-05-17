@@ -1,34 +1,43 @@
 class Desire
 
-  class SortedSet
-    include Desire::Key
+  class SortedSet < Native
     include Desire::NumericHelpers
     include Enumerable
 
-    attr_reader :client, :key
+    COMMANDS = %w[
+      zadd zcard zcount zincrby zinterstore zrange zrangebyscore
+      zrank zrem zremrangebyrank zremrangebyscore zrevrange
+      zrevrangebyscore zrevrank zscore zunionstore 
+    ]
 
-    def initialize(client, key)
-      @client = client
-      @key = key
+    # NOTE: this has to be evaluated in this exact file so the class_eval
+    # call can pick up the correct file and line number for stack traces.
+    COMMANDS.each do |command|
+      class_eval(CommandHelpers.definition(command), __FILE__, __LINE__ + 1)
     end
 
-    def union!(input_keys, options={})
-      client.zunionstore(key, input_keys, options)
-    end
+    # Aliases for idiomaticity
+    alias_method :size, :zcard
+    alias_method :<<, :zadd
+    alias_method :delete, :zrem
+    alias_method :clear, :del
+    alias_method :delete_by_score, :zremrangebyscore
+    alias_method :delete_by_rank, :zremrangebyrank
 
-    def inter!(input_keys, options={})
-      client.zinterstore(key, input_keys, options)
-    end
 
+
+    # Augmentations
     def members
-      client.zrange(key, 0, -1)
+      client.range(key, 0, -1)
     end
 
-    def card
-      client.zcard(key)
+    def first(options={})
+      client.zrange(key, 0, 0, options)
     end
 
-    alias_method :size, :card
+    def last(options={})
+      client.zrange(key, -1, -1, options)
+    end
 
     def scores
       out = []
@@ -37,33 +46,17 @@ class Desire
       out
     end
 
+    # For pretending it's a Ruby Hash with the sorted set members as
+    # the keys, and the scores as the values.  Dubious?
+    alias_method :keys, :members
+    alias_method :values, :scores
+
     def to_hash
       array = self.range(0, -1, :withscores => true)
       ::Hash[*array]
     end
 
-    def add(score, value)
-      client.zadd(key, score, value)
-    end
-
-    def delete(member)
-      client.zrem(key, member)
-    end
-
-    def clear
-      del
-    end
-
-    # TODO: do we really want to be renaming redis commands
-    # if the new name is not an established Ruby idiom?
-    def delete_by_score(start, stop)
-      client.zremrangebyscore(key, start, stop)
-    end
-
-    def delete_by_rank(start, stop)
-      client.zremrangebyrank(key, start, stop)
-    end
-
+    # TODO: port improvements by nlacasse from Spire's SortedHash
     def range_by_score(start, stop, options={})
       if options.has_key?(:reverse)
         options.delete(:reverse)
@@ -73,35 +66,17 @@ class Desire
       end
     end
 
-    def range(start, stop, options={})
-      client.zrange(key, start, stop, options)
-    end
-
-    ## TODO: imitate Array#slice
-    #def slice(*args)
-    #end
-
-    def score(member)
-      client.zscore(key, member)
-    end
-
-    def count(start, stop)
-      client.zcount(key, start, stop)
-    end
-
-    def incrby(increment, value)
-      client.zincrby(key, increment, value)
-    end
-
+    # Takes a Ruby Hash where the keys represent set members, 
+    # and the values represent set scores.
     def multi_incrby(properties)
       properties.each do |name, value|
         self.incrby(value, name)
       end
     end
 
-    def last(options={})
-      client.zrange(key, -1, -1, options)
-    end
+    ## TODO: imitate Array#slice
+    #def slice(*args)
+    #end
 
   end
 end

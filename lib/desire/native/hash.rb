@@ -1,60 +1,45 @@
 class Desire
-  class Hash
-    include Desire::Key
+  class Hash < Native
     include Enumerable
 
-    attr_reader :client, :key
+    COMMANDS = %w[
+      hdel hexists hget hgetall hincrby hincrbyfloat hkeys hlen hmget
+      hmset hset hsetnx hvals
+    ]
 
-    def initialize(client, key)
-      @client = client
-      @key = key
+    # NOTE: this has to be evaluated in this exact file so the class_eval
+    # call can pick up the correct file and line number for stack traces.
+    COMMANDS.each do |command|
+      class_eval(CommandHelpers.definition(command), __FILE__, __LINE__ + 1)
     end
 
+    # Aliases for idiomaticity
     alias_method :clear, :del
+    alias_method :delete, :hdel
+    alias_method :size, :hlen
+    alias_method :values, :hvals
+    alias_method :values_at, :hmget
+    alias_method :has_key?, :hexists
 
-    def keys
-      client.hkeys(key)
-    end
 
-    def has_key?(field)
-      client.hexists(key, field)
-    end
-
-    def get(field)
-      client.hget(key, field)
-    end
-
-    def set(field, value)
-      client.hset(key, field, value)
-    end
-
-    def delete(field)
-      client.hdel(key, field)
-    end
-
-    def size
-      client.hlen(key)
-    end
-
-    def incrby(field, value)
-      client.hincrby(key, field, value)
-    end
+    # Augmentations
 
     def merge!(hash)
       args = hash.to_a.flatten
       client.hmset(key, *args)
     end
 
+    # TODO: consider adding buffering for large hashes.
+    # if hlen > N
+    #   keys = hkeys
+    #   keys.each_slice(M) { |keyslice| hmget(keyslice) }
+    # else
+    #   hgetall
+    # end
+    #
+    # Or make an #each_slice method?
     def each(&block)
       client.hgetall(key).each(&block)
-    end
-
-    def values_at(*fields)
-      client.hmget(key, *fields)
-    end
-
-    def getall
-      client.hgetall(key)
     end
 
   end

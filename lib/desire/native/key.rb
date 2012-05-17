@@ -1,6 +1,8 @@
 class Desire
 
-  # This mixin assumes that #client and #key are defined.
+  # Mixin for use with any class representing a single Redis type.
+  # Provides the Redis methods that work on all keys.
+  # Assumes that #client and #key are defined.
   module Key
 
     def watch

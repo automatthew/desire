@@ -77,7 +77,7 @@ class Desire
         if input_keys.empty?
           @member_size = 0
         else
-          @member_size = @zset.union!(input_keys)
+          @member_size = @zset.unionstore(input_keys)
           client.sadd(@aggregates_key, @union_key)
         end
       end
