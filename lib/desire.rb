@@ -75,14 +75,13 @@ class Desire
 
   attr_reader :client
 
-  # Optional :scope will be used in generating the keys to be used
-  # in the actual Redis storage.
-  #
-  def initialize(client, options={})
+  # The client should be an instance of redis-rb's Redis class,
+  # or it should act like one.
+  def initialize(client)
     @client = client
-    @scope = options[:scope]
   end
 
+  # Define convenience methods for instantiating wrapper classes.
   {
     :hash => Desire::Hash,
     :list => Desire::List,

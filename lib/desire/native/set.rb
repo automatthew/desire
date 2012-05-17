@@ -11,7 +11,7 @@ class Desire
     # NOTE: this has to be evaluated in this exact file so the class_eval
     # call can pick up the correct file and line number for stack traces.
     COMMANDS.each do |command|
-      class_eval(CommandHelpers.definition(command), __FILE__, __LINE__ + 1)
+      class_eval(self.definition(command), __FILE__, __LINE__ + 1)
     end
 
     # Aliases for idiomaticity

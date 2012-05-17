@@ -1,5 +1,6 @@
 require "pp"
 
+desc "update with necessary dependencies"
 task "update" do
   str = File.read("desire.gemspec")
   gemspec = eval(str)

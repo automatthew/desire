@@ -5,10 +5,6 @@ class Desire
   # Assumes that #client and #key are defined.
   module Key
 
-    def watch
-      client.watch(key)
-    end
-
     def exists?
       client.exists(key)
     end
