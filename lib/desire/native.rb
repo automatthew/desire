@@ -1,5 +1,6 @@
 class Desire
 
+  # Base class for wrappers representing the native Redis types.
   class Native
     include Desire::Key
 
@@ -25,7 +26,7 @@ class Desire
 
     end
 
-    attr_reader :client, :key
+    attr_reader :client
 
     # @param [Redis] client
     # @param [String] key The key at which Redis commands will operate.

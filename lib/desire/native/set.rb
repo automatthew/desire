@@ -1,9 +1,11 @@
 class Desire
   class Native
 
+    # A wrapper around the native Redis set type. 
     class Set < Native
       include Enumerable
 
+      # @!group Native Redis Commands
       redis_command :sadd
       redis_command :scard
       redis_command :sdiff
@@ -18,6 +20,7 @@ class Desire
       redis_command :srem
       redis_command :sunion
       redis_command :sunionstore
+      # @!endgroup
 
       # Aliases for idiomaticity
       alias_method :clear, :del
@@ -26,6 +29,8 @@ class Desire
       alias_method :to_a, :smembers
       alias_method :include?, :sismember
       alias_method :delete, :srem
+
+      # @!group Augmentations
 
       # Yield each member of the set.
       def each(&block)

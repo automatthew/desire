@@ -5,6 +5,8 @@ class Desire
   # Assumes that #client and #key are defined.
   module Key
 
+    attr_reader :key
+
     def exists?
       client.exists(key)
     end

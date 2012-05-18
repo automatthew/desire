@@ -4,13 +4,7 @@ class Desire
   # A wrapper around the native Redis list type. 
     class List < Native
 
-      attr_reader :client, :key
-
-      def initialize(client, key)
-        @client = client
-        @key = key
-      end
-
+      # @!group Native Redis Commands
       redis_command :lindex
       redis_command :linsert
       redis_command :llen
@@ -25,12 +19,16 @@ class Desire
       redis_command :rpoplpush
       redis_command :rpush
       redis_command :rpushx
+      # @!endgroup
 
 
       # Aliases for idiomaticity
       alias_method :size, :llen
       alias_method :[], :lindex
       alias_method :[]=, :lset
+
+      # @!group Augmentations
+      # @!endgroup
 
       #TODO: define methods for slice, slice!, shift, unshift, push, pop
       # TODO: define each and include Enumerable

@@ -5,8 +5,8 @@ class Desire
   # Assumes the including class has defined #client.
   module Transaction
 
-    # TODO: support separate multi and exec commands.
     def multi(&block)
+      # TODO: support separate multi and exec commands.
       client.multi(&block)
     end
 

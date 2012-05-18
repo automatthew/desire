@@ -1,14 +1,16 @@
 class Desire
   class Collector
     include Enumerable
+    include Composite
 
-    attr_reader :base_key, :index_key, :klass
+    attr_reader :index_key, :collection_class
 
     # @param [Redis] client
-    # @param [Class] klass
-    def initialize(client, klass, base_key)
+    # @param [Desire::Native, Desire::Composite] collection_class the Desire wrapper
+    #   class to use when initializing instances for collected items.
+    def initialize(client, collection_class, base_key)
       @client = client
-      @klass = klass
+      @collection_class = collection_class
       @base_key = base_key
       @index_key = "#{@base_key}.index"
       @index = Native::Set.new(client, @index_key)
@@ -33,7 +35,7 @@ class Desire
 
     def get(name)
       add(name)
-      klass.new(@client, key_for(name))
+      collection_class.new(@client, key_for(name))
     end
 
     def all
@@ -47,7 +49,7 @@ class Desire
 
     def each
       keys.each do |key|
-        yield [key, klass.new(@client, key)]
+        yield [key, collection_class.new(@client, key)]
       end
     end
 

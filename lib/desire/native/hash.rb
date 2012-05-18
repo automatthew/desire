@@ -2,15 +2,10 @@ class Desire
   class Native
 
     # A wrapper around the native Redis hash type. 
-    #
-    #   hash = Desire::Native::Hash.new(redis, "some_hash")
-    #   hash.hlen # => 23
-    #   hash.len # => 23
-    #   hash.size # => 23
-    #
     class Hash < Native
       include Enumerable
 
+      # @!group Native Redis Commands
       redis_command :hdel, :alias => false
       redis_command :hexists
       redis_command :hget
@@ -24,6 +19,7 @@ class Desire
       redis_command :hset
       redis_command :hsetnx
       redis_command :hvals
+      # @!endgroup
 
       # Aliases for idiomaticity
       alias_method :clear, :del
@@ -36,7 +32,7 @@ class Desire
       alias_method :has_key?, :hexists
 
 
-      # Augmentations
+      # @!group Augmentations
 
       # HMSET the values in the given hash.
       def merge!(hash)

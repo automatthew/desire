@@ -2,14 +2,16 @@
 require "desire/helpers"
 
 require "desire/key"
+require "desire/transaction"
+
 require "desire/native"
 require "desire/native/list"
 require "desire/native/hash"
 require "desire/native/set"
 require "desire/native/sorted_set"
 
-require "desire/transaction"
 
+require "desire/composite"
 require "desire/collector"
 require "desire/time_slicer"
 require "desire/sorted_hash"

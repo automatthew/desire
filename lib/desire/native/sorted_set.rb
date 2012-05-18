@@ -1,10 +1,12 @@
 class Desire
   class Native
 
+    # A wrapper around the native Redis sorted set type. 
     class SortedSet < Native
       include Desire::NumericHelpers
       #include Enumerable
 
+      # @!group Native Redis Commands
       redis_command :zadd
       redis_command :zcard
       redis_command :zcount
@@ -21,6 +23,7 @@ class Desire
       redis_command :zrevrank
       redis_command :zscore
       redis_command :zunionstore
+      # @!endgroup
 
 
       # Aliases for idiomaticity
@@ -33,7 +36,7 @@ class Desire
 
 
 
-      # Augmentations
+      # @!group Augmentations
 
       # @return [Array] all members
       def members

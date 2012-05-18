@@ -1,17 +1,19 @@
 class Desire
 
   class SortedHash
+    include Composite
     include Transaction
 
-    attr_reader :client, :hash_key, :index_key
+    attr_reader :hash_key, :index_key
 
-    def initialize(client, key, options={})
+    def initialize(client, base_key, options={})
       @client = client
+      @base_key = base_key
 
-      @hash_key = "#{key}.store"
+      @hash_key = "#{@base_key}.store"
       @hash = Native::Hash.new(client, @hash_key)
 
-      @index_key = "#{key}.index"
+      @index_key = "#{@base_key}.index"
       @index = Native::SortedSet.new(client, @index_key)
 
       @retry_limit = options[:retries] || 16
