@@ -8,7 +8,7 @@ Desire currently does not wrap the PUB/SUB commands for a number of reasons:
 * they are already quite simple to use.
 * SUBSCRIBE and PSUBSCRIBE block the client
 
-That last reason also explains the lack of BLPOP and its pals in Desire::List.
+That last reason also explains the lack of BLPOP and its pals in Desire::Native::List.
 
 ## Overview
 
@@ -61,4 +61,8 @@ collide, either in other Desire composites, or manually.
 
     desire.client.keys("messages.*")
     # => ["messages.index", "messages.store"]
+
+## Convention Versioning
+
+TBW
 

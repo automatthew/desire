@@ -3,29 +3,34 @@ require "desire/helpers"
 
 require "desire/key"
 require "desire/transaction"
-
 require "desire/native"
+require "desire/composite"
+
 require "desire/native/list"
 require "desire/native/hash"
 require "desire/native/set"
 require "desire/native/sorted_set"
 
 
-require "desire/composite"
-require "desire/collector"
-require "desire/time_slicer"
-require "desire/sorted_hash"
+require "desire/v0/composites"
+
 
 
 class Desire
   include Transaction
 
+  # Look for missing classes under the current default convention version
+  def self.const_missing(name)
+    V0.const_get(name)
+  end
+
   attr_reader :client
 
   # The client should be an instance of redis-rb's Redis class,
   # or it should act like one.
-  def initialize(client)
+  def initialize(client, options={})
     @client = client
+    @options = options
   end
 
   # Define convenience methods for instantiating wrapper classes.
@@ -37,7 +42,9 @@ class Desire
     :sorted_set => Desire::Native::SortedSet,
 
     # Composites
-    :sorted_hash => Desire::SortedHash
+    :sorted_hash => Desire::SortedHash,
+    :collector => Desire::Collector,
+    :time_slicer => Desire::TimeSlicer,
   }.each do |name, klass|
     class_eval <<-EVAL, __FILE__, __LINE__ + 1
       def #{name}(key)
