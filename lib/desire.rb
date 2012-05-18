@@ -16,6 +16,19 @@ require "desire/v0/composites"
 
 
 
+# A convenience wrapper for instantiating the actual Desire wrapper classes
+# used in an application.
+#
+# Usage:
+# 
+#   desire = Desire.new(redis)
+#   hash = desire.hash("redis_key_for_hash")
+#   zset = desire.sorted_set("some_other_key")
+#
+# The composite wrappers are versioned, but the classes considered stable
+# can be accessed as constants in the Desire namespace:
+#
+#   Desire::SortedHash #=> Desire::V0::SortedHash
 class Desire
   include Transaction
 
