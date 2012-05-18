@@ -1,20 +1,22 @@
 class Desire
 
+  # Usage:
+  #   meter = StorageMeter.new(client, "Ac-Gb7w2.storage_meter")
+  #   meter["Ac-Gb7w2"].update("name", 27)
+  #   meter["Ac-Gb7w2"].update("email", 55)
+  #   meter["Ac-Gb7w2"].update("origins", 233)
+  #
+  #   meter["Su-uv73t"].update("name", 22)
+  #
+  #   meter["Ch-asd8W"].update("name", 14)
+  #   meter["Ch-asd8W"].update("Me-38bys", 135)
+  #   meter["Ch-asd8W"].delete("Me-f4s5", 257)
   class StorageMeter
 
-    # Usage:
-    # meter = StorageMeter.new(client, "Ac-Gb7w2.storage_meter")
-    # meter["Ac-Gb7w2"].update("name", 27)
-    # meter["Ac-Gb7w2"].update("email", 55)
-    # meter["Ac-Gb7w2"].update("origins", 233)
 
-    # meter["Su-uv73t"].update("name", 22)
-
-    # meter["Ch-asd8W"].update("name", 14)
-    # meter["Ch-asd8W"].update("Me-38bys", 135)
-    # meter["Ch-asd8W"].delete("Me-f4s5", 257)
-
-    def initialize(client, base_key, options={})
+    # @param [Redis] client Duck typed to redis-rb 2.2.2
+    # @param [#to_s] base_key Base key, to be used as a prefix for internally managed keys
+    def initialize(client, base_key)
       @client = client
       @base_key = base_key
       @collector_key = "#{@base_key}.collector"

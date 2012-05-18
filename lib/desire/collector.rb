@@ -3,6 +3,9 @@ class Desire
     include Enumerable
 
     attr_reader :base_key, :index_key, :klass
+
+    # @param [Redis] client
+    # @param [Class] klass
     def initialize(client, klass, base_key)
       @client = client
       @klass = klass
