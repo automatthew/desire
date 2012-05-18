@@ -3,19 +3,25 @@ class Desire
 
     class SortedSet < Native
       include Desire::NumericHelpers
-      include Enumerable
+      #include Enumerable
 
-      COMMANDS = %w[
-        zadd zcard zcount zincrby zinterstore zrange zrangebyscore
-        zrank zrem zremrangebyrank zremrangebyscore zrevrange
-        zrevrangebyscore zrevrank zscore zunionstore 
-      ]
+      redis_command :zadd
+      redis_command :zcard
+      redis_command :zcount
+      redis_command :zincrby
+      redis_command :zinterstore
+      redis_command :zrange
+      redis_command :zrangebyscore
+      redis_command :zrank
+      redis_command :zrem
+      redis_command :zremrangebyrank
+      redis_command :zremrangebyscore
+      redis_command :zrevrange
+      redis_command :zrevrangebyscore
+      redis_command :zrevrank
+      redis_command :zscore
+      redis_command :zunionstore
 
-      # NOTE: this has to be evaluated in this exact file so the class_eval
-      # call can pick up the correct file and line number for stack traces.
-      COMMANDS.each do |command|
-        class_eval(self.definition(command), __FILE__, __LINE__ + 1)
-      end
 
       # Aliases for idiomaticity
       alias_method :size, :zcard
@@ -28,18 +34,25 @@ class Desire
 
 
       # Augmentations
+
+      # @return [Array] all members
       def members
         client.range(key, 0, -1)
       end
 
+      # @param [Hash] options options to pass to the redis command
+      # @return [String] the member with the lowest score
       def first(options={})
         client.zrange(key, 0, 0, options)
       end
 
+      # @param [Hash] options options to pass to the redis command
+      # @return [String] the member with the highest score
       def last(options={})
         client.zrange(key, -1, -1, options)
       end
 
+      # @return [Array<Numeric>] all scores
       def scores
         out = []
         array = self.range(0, -1, :withscores => true)
@@ -52,13 +65,16 @@ class Desire
       alias_method :keys, :members
       alias_method :values, :scores
 
+      # @return [Hash] a hash with members as keys and scores as values
       def to_hash
         array = self.range(0, -1, :withscores => true)
         ::Hash[*array]
       end
 
-      # TODO: port improvements by nlacasse from Spire's SortedHash
+      # @param [Hash] options options to pass to the redis command
+      # @return [Array] the Redis multibulk reply
       def range_by_score(start, stop, options={})
+      # TODO: port improvements by nlacasse from Spire's SortedHash
         if options.has_key?(:reverse)
           options.delete(:reverse)
           client.zrevrangebyscore(key, stop, start, options)
@@ -67,8 +83,9 @@ class Desire
         end
       end
 
-      # Takes a Ruby Hash where the keys represent set members, 
-      # and the values represent set scores.
+      # Given a Ruby Hash where the keys represent set members, 
+      # and the values represent set scores, performs ZINCRBY on each pair.
+      # @param [{key => score}] properties
       def multi_incrby(properties)
         properties.each do |name, value|
           self.incrby(value, name)

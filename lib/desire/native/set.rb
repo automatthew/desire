@@ -4,16 +4,20 @@ class Desire
     class Set < Native
       include Enumerable
 
-      COMMANDS = %w[
-        sadd scard sdiff sdiffstore sinter sinterstore sismember smembers
-        smove spop srandmember srem sunion sunionstore
-      ]
-
-      # NOTE: this has to be evaluated in this exact file so the class_eval
-      # call can pick up the correct file and line number for stack traces.
-      COMMANDS.each do |command|
-        class_eval(self.definition(command), __FILE__, __LINE__ + 1)
-      end
+      redis_command :sadd
+      redis_command :scard
+      redis_command :sdiff
+      redis_command :sdiffstore
+      redis_command :sinter
+      redis_command :sinterstore
+      redis_command :sismember
+      redis_command :smembers
+      redis_command :smove
+      redis_command :spop
+      redis_command :srandmember
+      redis_command :srem
+      redis_command :sunion
+      redis_command :sunionstore
 
       # Aliases for idiomaticity
       alias_method :clear, :del
@@ -23,6 +27,7 @@ class Desire
       alias_method :include?, :sismember
       alias_method :delete, :srem
 
+      # Yield each member of the set.
       def each(&block)
         to_a.each(&block)
       end

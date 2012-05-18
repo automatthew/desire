@@ -1,8 +1,8 @@
 class Desire
   class Native
+
+  # A wrapper around the native Redis list type. 
     class List < Native
-      # TODO: define each and include Enumerable
-      #include Enumerable
 
       attr_reader :client, :key
 
@@ -11,16 +11,21 @@ class Desire
         @key = key
       end
 
-      COMMANDS = %w[
-        lindex linsert llen lpop lpush lpushx
-        lrange lrem lset ltrim rpop rpoplpush rpush rpushx
-      ]
+      redis_command :lindex
+      redis_command :linsert
+      redis_command :llen
+      redis_command :lpop
+      redis_command :lpush
+      redis_command :lpushx
+      redis_command :lrange
+      redis_command :lrem
+      redis_command :lset
+      redis_command :ltrim
+      redis_command :rpop
+      redis_command :rpoplpush
+      redis_command :rpush
+      redis_command :rpushx
 
-      # NOTE: this has to be evaluated in this exact file so the class_eval
-      # call can pick up the correct file and line number for stack traces.
-      COMMANDS.each do |command|
-        class_eval(self.definition(command), __FILE__, __LINE__ + 1)
-      end
 
       # Aliases for idiomaticity
       alias_method :size, :llen
@@ -28,6 +33,7 @@ class Desire
       alias_method :[]=, :lset
 
       #TODO: define methods for slice, slice!, shift, unshift, push, pop
+      # TODO: define each and include Enumerable
 
     end
   end

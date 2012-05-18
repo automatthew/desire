@@ -1,26 +1,29 @@
 class Desire
   class Native
+
+    # A wrapper around the native Redis hash type. 
+    #
+    #   hash = Desire::Native::Hash.new(redis, "some_hash")
+    #   hash.hlen # => 23
+    #   hash.len # => 23
+    #   hash.size # => 23
+    #
     class Hash < Native
       include Enumerable
 
-      # These commands are defined as instance methods.  Where it is
-      # unambiguous, you can omit the initial "h".
-      COMMANDS = %w[
-        hexists hget hgetall hincrby hincrbyfloat hkeys hlen hmget
-        hmset hset hsetnx hvals
-      ]
-
-      # NOTE: this has to be evaluated in this exact file so the class_eval
-      # call can pick up the correct file and line number for stack traces.
-      COMMANDS.each do |command|
-        class_eval(self.definition(command), __FILE__, __LINE__ + 1)
-      end
-
-      # Remove the value at the given field.
-      def hdel(field)
-        # Can't automagic this one up, because the magic would overwrite DEL"
-        client.hdel(key, field)
-      end
+      redis_command :hdel, :alias => false
+      redis_command :hexists
+      redis_command :hget
+      redis_command :hgetall
+      redis_command :hincrby
+      redis_command :hincrbyfloat
+      redis_command :hkeys
+      redis_command :hlen
+      redis_command :hmget
+      redis_command :hmset
+      redis_command :hset
+      redis_command :hsetnx
+      redis_command :hvals
 
       # Aliases for idiomaticity
       alias_method :clear, :del
@@ -34,7 +37,6 @@ class Desire
 
 
       # Augmentations
-
 
       # HMSET the values in the given hash.
       def merge!(hash)
