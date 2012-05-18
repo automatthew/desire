@@ -9,6 +9,7 @@ task "update" do
   end
 end
 
+desc "Run the tests in ./test/unit/"
 task "test:unit" do
   files = FileList["test/unit/*.rb"]
   TaskHelpers.rspec(
@@ -23,9 +24,8 @@ task "doc" do
 	sh "yard --output docs"
 end
 
-# Updates GITHUB PAGES
-desc 'Update gh-pages branch'
-task 'docs:pages' => ['docs/', 'docs/.git', "doc"] do
+desc "Update GitHub pages"
+task "doc:pages" => %w[ docs/ docs/.git doc ] do
   rev = `git rev-parse --short HEAD`.strip
   Dir.chdir 'docs' do
     last_commit = `git log -n1 --pretty=oneline`.strip
@@ -46,6 +46,8 @@ task 'docs:pages' => ['docs/', 'docs/.git', "doc"] do
       end
     end
   end
+  puts "Docs pushed to:"
+  puts "http://spire-io.github.com/desire/"
 end
 
 file 'docs/' do |f|
