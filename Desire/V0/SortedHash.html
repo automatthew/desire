@@ -1,0 +1,1727 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Desire::V0::SortedHash
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Desire.html" title="Desire (class)">Desire</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../V0.html" title="Desire::V0 (module)">V0</a></span></span>
+     &raquo; 
+    <span class="title">SortedHash</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Desire::V0::SortedHash
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Desire::V0::SortedHash</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Composite.html" title="Desire::Composite (module)">Composite</a></span>, <span class='object_link'><a href="../Transaction.html" title="Desire::Transaction (module)">Transaction</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/desire/v0/sorted_hash.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hash_key-instance_method" title="#hash_key (instance method)">- (Object) <strong>hash_key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute hash_key.
+</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#index_key-instance_method" title="#index_key (instance method)">- (Object) <strong>index_key</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute index_key.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../Composite.html" title="Desire::Composite (module)">Composite</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Composite.html#base_key-instance_method" title="Desire::Composite#base_key (method)">#base_key</a></span>, <span class='object_link'><a href="../Composite.html#client-instance_method" title="Desire::Composite#client (method)">#client</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#append-instance_method" title="#append (instance method)">- (Object) <strong>append</strong>(key, value, score) </a>
+    
+
+    
+      (also: #&lt;&lt;)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Add the key/value to the SortedHash with either the supplied score or the
+previous highest score + 1.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear-instance_method" title="#clear (instance method)">- (Object) <strong>clear</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Delete both the Hash and SortedSet.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete-instance_method" title="#delete (instance method)">- (nil) <strong>delete</strong>(*keys) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Delete one or more keys.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fields_by_range-instance_method" title="#fields_by_range (instance method)">- (Array) <strong>fields_by_range</strong>(start = nil, stop = nil, limit = nil, reverse = false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve the keys for elements with scores in the specified range.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-instance_method" title="#get (instance method)">- (String) <strong>get</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve the value only.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_with_score-instance_method" title="#get_with_score (instance method)">- ({:data =&gt; value, :score =&gt; score}) <strong>get_with_score</strong>(key) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve the value and score.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (SortedHash) <strong>initialize</strong>(client, base_key, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of SortedHash.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keys-instance_method" title="#keys (instance method)">- (Array) <strong>keys</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve the keys of all elements.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_before-instance_method" title="#remove_before (instance method)">- (SortedHash) <strong>remove_before</strong>(stop) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Remove all elements with scores lower than the stop parameter.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remove_by_range-instance_method" title="#remove_by_range (instance method)">- (SortedHash) <strong>remove_by_range</strong>(start = nil, stop = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Find and remove elements with scores between the start and stop parameters.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set-instance_method" title="#set (instance method)">- (Object) <strong>set</strong>(key, value, score) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Add an element with the given key, value, and score.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">- (Integer) <strong>size</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate-instance_method" title="#truncate (instance method)">- (Object) <strong>truncate</strong>(length) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Remove lowest ranked elements so that the SortedHash has exactly the number
+of elements specified by the length param.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update-instance_method" title="#update (instance method)">- (Object) <strong>update</strong>(key, value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Update an existing key without changing the score.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#values_at-instance_method" title="#values_at (instance method)">- (Array) <strong>values_at</strong>(*keys) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Retrieve the values for the specified keys.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#values_by_range-instance_method" title="#values_by_range (instance method)">- (Object) <strong>values_by_range</strong>(start = nil, stop = nil, limit = nil, reverse = false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Transaction.html" title="Desire::Transaction (module)">Transaction</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Transaction.html#discard-instance_method" title="Desire::Transaction#discard (method)">#discard</a></span>, <span class='object_link'><a href="../Transaction.html#multi-instance_method" title="Desire::Transaction#multi (method)">#multi</a></span>, <span class='object_link'><a href="../Transaction.html#unwatch-instance_method" title="Desire::Transaction#unwatch (method)">#unwatch</a></span>, <span class='object_link'><a href="../Transaction.html#watch-instance_method" title="Desire::Transaction#watch (method)">#watch</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Desire::V0::SortedHash (class)">SortedHash</a></span></tt>) <strong>initialize</strong>(client, base_key, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of SortedHash
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 10</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_client identifier id'>client</span><span class='comma token'>,</span> <span class='rubyid_base_key identifier id'>base_key</span><span class='comma token'>,</span> <span class='rubyid_options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='rubyid_@client ivar id'>@client</span> <span class='assign token'>=</span> <span class='rubyid_client identifier id'>client</span>
+  <span class='rubyid_@base_key ivar id'>@base_key</span> <span class='assign token'>=</span> <span class='rubyid_base_key identifier id'>base_key</span>
+
+  <span class='rubyid_@hash_key ivar id'>@hash_key</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{@base_key}.store&quot;</span>
+  <span class='rubyid_@hash ivar id'>@hash</span> <span class='assign token'>=</span> <span class='rubyid_Native constant id'>Native</span><span class='colon2 op'>::</span><span class='rubyid_Hash constant id'>Hash</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_client identifier id'>client</span><span class='comma token'>,</span> <span class='rubyid_@hash_key ivar id'>@hash_key</span><span class='rparen token'>)</span>
+
+  <span class='rubyid_@index_key ivar id'>@index_key</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{@base_key}.index&quot;</span>
+  <span class='rubyid_@index ivar id'>@index</span> <span class='assign token'>=</span> <span class='rubyid_Native constant id'>Native</span><span class='colon2 op'>::</span><span class='rubyid_SortedSet constant id'>SortedSet</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_client identifier id'>client</span><span class='comma token'>,</span> <span class='rubyid_@index_key ivar id'>@index_key</span><span class='rparen token'>)</span>
+
+  <span class='rubyid_@retry_limit ivar id'>@retry_limit</span> <span class='assign token'>=</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:retries</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='integer val'>16</span>
+  <span class='rubyid_@size_limit ivar id'>@size_limit</span> <span class='assign token'>=</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:size_limit</span><span class='rbrack token'>]</span>
+  <span class='rubyid_@ttl ivar id'>@ttl</span> <span class='assign token'>=</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:ttl</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="hash_key-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="hash_key-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hash_key</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute hash_key
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 8</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_hash_key identifier id'>hash_key</span>
+  <span class='rubyid_@hash_key ivar id'>@hash_key</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="index_key-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="index_key-instance_method">
+  
+    - (<tt>Object</tt>) <strong>index_key</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute index_key
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 8</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_index_key identifier id'>index_key</span>
+  <span class='rubyid_@index_key ivar id'>@index_key</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="append-instance_method">
+  
+    - (<tt>Object</tt>) <strong>append</strong>(key, value, score) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='<<-instance_method'>&lt;&lt;</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Add the key/value to the SortedHash with either the supplied score or the
+previous highest score + 1. Uses optimistic locking to make sure the value
+is added with a score higher than any previously added. Returns the score
+actually used to set the value.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 53</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_append identifier id'>append</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='comma token'>,</span> <span class='rubyid_score identifier id'>score</span><span class='rparen token'>)</span>
+  <span class='comment val'># attempt the transaction, retrying a limited number of</span>
+  <span class='comment val'># times if the WATCH makes us bail.</span>
+  <span class='rubyid_retry_counter identifier id'>retry_counter</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+  <span class='rubyid_while while kw'>while</span> <span class='rubyid_retry_counter identifier id'>retry_counter</span> <span class='lt op'>&lt;</span> <span class='rubyid_@retry_limit ivar id'>@retry_limit</span>
+    <span class='comment val'># Have to put the watch inside the retry loop because</span>
+    <span class='comment val'># calling EXEC clears all watches.</span>
+    <span class='comment val'># TODO: maybe we want to have Composite#watch(@index) ??</span>
+    <span class='rubyid_watch identifier id'>watch</span><span class='lparen token'>(</span><span class='rubyid_@index ivar id'>@index</span><span class='rparen token'>)</span>
+
+    <span class='comment val'># get highest score from the Sorted Set and increment the</span>
+    <span class='comment val'># input score if necessary.</span>
+    <span class='rubyid__value identifier id'>_value</span><span class='comma token'>,</span> <span class='rubyid_high_score identifier id'>high_score</span> <span class='assign token'>=</span> <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_last identifier id'>last</span><span class='lparen token'>(</span><span class='symbol val'>:with_scores</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_true true kw'>true</span><span class='rparen token'>)</span>
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_high_score identifier id'>high_score</span>
+      <span class='rubyid_if if kw'>if</span> <span class='rubyid_score identifier id'>score</span> <span class='leq op'>&lt;=</span> <span class='rubyid_high_score identifier id'>high_score</span><span class='dot token'>.</span><span class='rubyid_to_i identifier id'>to_i</span>
+        <span class='rubyid_score identifier id'>score</span> <span class='assign token'>=</span> <span class='rubyid_high_score identifier id'>high_score</span><span class='dot token'>.</span><span class='rubyid_to_i identifier id'>to_i</span> <span class='plus op'>+</span> <span class='integer val'>1</span>
+      <span class='rubyid_end end kw'>end</span>
+    <span class='rubyid_end end kw'>end</span>
+
+    <span class='rubyid_if if kw'>if</span> <span class='rubyid_set identifier id'>set</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='comma token'>,</span> <span class='rubyid_score identifier id'>score</span><span class='rparen token'>)</span>
+      <span class='rubyid_return return kw'>return</span> <span class='rubyid_score identifier id'>score</span>
+    <span class='rubyid_else else kw'>else</span>
+      <span class='rubyid_retry_counter identifier id'>retry_counter</span> <span class='opasgn op'>+=</span> <span class='integer val'>1</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+
+  <span class='rubyid_raise identifier id'>raise</span> <span class='string val'>&quot;Optimistic locking failed too many times&quot;</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="clear-instance_method">
+  
+    - (<tt>Object</tt>) <strong>clear</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Delete both the Hash and SortedSet
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174
+175</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 172</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_clear identifier id'>clear</span>
+  <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_del identifier id'>del</span>
+  <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_del identifier id'>del</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete-instance_method">
+  
+    - (<tt>nil</tt>) <strong>delete</strong>(*keys) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Delete one or more keys
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 100</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rubyid_keys identifier id'>keys</span><span class='rparen token'>)</span>
+  <span class='rubyid_multi identifier id'>multi</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_keys identifier id'>keys</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_k identifier id'>k</span><span class='bitor op'>|</span>
+      <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_k identifier id'>k</span><span class='rparen token'>)</span>
+      <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_k identifier id'>k</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_nil nil kw'>nil</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fields_by_range-instance_method">
+  
+    - (<tt>Array</tt>) <strong>fields_by_range</strong>(start = nil, stop = nil, limit = nil, reverse = false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the keys for elements with scores in the specified range.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199
+200
+201
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 197</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_fields_by_range identifier id'>fields_by_range</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_limit identifier id'>limit</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_reverse identifier id'>reverse</span><span class='assign token'>=</span><span class='rubyid_false false kw'>false</span><span class='rparen token'>)</span>
+  <span class='rubyid_start identifier id'>start</span> <span class='assign token'>=</span> <span class='rubyid_start identifier id'>start</span> <span class='integer val'>? </span><span class='dstring node'>&quot;(#{start}&quot;</span> <span class='colon op'>:</span> <span class='string val'>'-inf'</span>
+  <span class='rubyid_stop identifier id'>stop</span> <span class='assign token'>=</span> <span class='rubyid_stop identifier id'>stop</span> <span class='integer val'>? </span><span class='dstring node'>&quot;#{stop}&quot;</span> <span class='colon op'>:</span> <span class='string val'>&quot;+inf&quot;</span>
+  <span class='rubyid_options identifier id'>options</span> <span class='assign token'>=</span> <span class='rubyid_limit identifier id'>limit</span> <span class='integer val'>? </span><span class='lbrace token'>{</span><span class='symbol val'>:limit</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='rubyid_limit identifier id'>limit</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span> <span class='colon op'>:</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:withscores</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_true true kw'>true</span>
+  <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:reverse</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='rubyid_reverse identifier id'>reverse</span>
+  <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_range_by_score identifier id'>range_by_score</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='comma token'>,</span> <span class='rubyid_options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get-instance_method">
+  
+    - (<tt>String</tt>) <strong>get</strong>(key) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the value only.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 86</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get identifier id'>get</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_get identifier id'>get</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_with_score-instance_method">
+  
+    - (<tt>{:data =&gt; value, :score =&gt; score}</tt>) <strong>get_with_score</strong>(key) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the value and score.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>{:data =&gt; value, :score =&gt; score}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 92</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_get_with_score identifier id'>get_with_score</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_data identifier id'>data</span> <span class='assign token'>=</span> <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_get identifier id'>get</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+    <span class='lbrace token'>{</span><span class='symbol val'>:data</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_data identifier id'>data</span><span class='comma token'>,</span> <span class='symbol val'>:score</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_score identifier id'>score</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span><span class='rbrace token'>}</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keys-instance_method">
+  
+    - (<tt>Array</tt>) <strong>keys</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the keys of all elements
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 167</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_keys identifier id'>keys</span>
+  <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_range identifier id'>range</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='integer val'>-1</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_before-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Desire::V0::SortedHash (class)">SortedHash</a></span></tt>) <strong>remove_before</strong>(stop) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Remove all elements with scores lower than the stop parameter.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Desire::V0::SortedHash (class)">SortedHash</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 138</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_remove_before identifier id'>remove_before</span><span class='lparen token'>(</span><span class='rubyid_stop identifier id'>stop</span><span class='rparen token'>)</span>
+  <span class='rubyid_remove_by_range identifier id'>remove_by_range</span><span class='lparen token'>(</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="remove_by_range-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Desire::V0::SortedHash (class)">SortedHash</a></span></tt>) <strong>remove_by_range</strong>(start = nil, stop = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Find and remove elements with scores between the start and stop parameters.
+Use the standard Redis &quot;(&quot; prefix and &quot;)&quot; suffix to
+switch between inclusive and exclusive.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Desire::V0::SortedHash (class)">SortedHash</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 114</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_remove_by_range identifier id'>remove_by_range</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='notop op'>!</span><span class='rubyid_start identifier id'>start</span> <span class='rubyid_and and kw'>and</span> <span class='notop op'>!</span><span class='rubyid_stop identifier id'>stop</span>
+    <span class='rubyid_throw identifier id'>throw</span> <span class='string val'>&quot;Must specify either start or stop&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+
+  <span class='rubyid_start identifier id'>start</span> <span class='assign token'>=</span> <span class='rubyid_start identifier id'>start</span> <span class='integer val'>? </span><span class='dstring node'>&quot;(#{start}&quot;</span> <span class='colon op'>:</span> <span class='string val'>'-inf'</span>
+  <span class='rubyid_stop identifier id'>stop</span> <span class='assign token'>=</span> <span class='rubyid_stop identifier id'>stop</span> <span class='integer val'>? </span><span class='dstring node'>&quot;#{stop}&quot;</span> <span class='colon op'>:</span> <span class='string val'>&quot;+inf&quot;</span>
+
+  <span class='comment val'># Get the keys to delete from the hash</span>
+  <span class='rubyid_keys identifier id'>keys</span> <span class='assign token'>=</span> <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_range_by_score identifier id'>range_by_score</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='rparen token'>)</span>
+  <span class='comment val'># Remove the keys from the index</span>
+  <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_delete_by_score identifier id'>delete_by_score</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='rparen token'>)</span>
+  <span class='comment val'># Remove the values from the hash</span>
+  <span class='rubyid_multi identifier id'>multi</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_keys identifier id'>keys</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_key identifier id'>key</span><span class='bitor op'>|</span>
+      <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+
+  <span class='rubyid_self self kw'>self</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set</strong>(key, value, score) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Add an element with the given key, value, and score.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 26</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_set identifier id'>set</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='comma token'>,</span> <span class='rubyid_score identifier id'>score</span><span class='rparen token'>)</span>
+  <span class='rubyid_success identifier id'>success</span> <span class='assign token'>=</span> <span class='rubyid_multi identifier id'>multi</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_set identifier id'>set</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+    <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_add identifier id'>add</span><span class='lparen token'>(</span><span class='rubyid_score identifier id'>score</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_success identifier id'>success</span> <span class='andop op'>&amp;&amp;</span> <span class='rubyid_@size_limit ivar id'>@size_limit</span> <span class='andop op'>&amp;&amp;</span> <span class='lparen token'>(</span><span class='rubyid_@size_limit ivar id'>@size_limit</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span><span class='rparen token'>)</span> <span class='andop op'>&amp;&amp;</span> <span class='lparen token'>(</span><span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_size identifier id'>size</span> <span class='gt op'>&gt;</span> <span class='rubyid_@size_limit ivar id'>@size_limit</span><span class='rparen token'>)</span>
+    <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='rubyid_@size_limit ivar id'>@size_limit</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_success identifier id'>success</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>size</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 161</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_size identifier id'>size</span>
+  <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_size identifier id'>size</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="truncate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>truncate</strong>(length) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Remove lowest ranked elements so that the SortedHash has exactly the number
+of elements specified by the length param.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 144</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_truncate identifier id'>truncate</span><span class='lparen token'>(</span><span class='rubyid_length identifier id'>length</span><span class='rparen token'>)</span>
+  <span class='rubyid_range_stop identifier id'>range_stop</span> <span class='assign token'>=</span> <span class='integer val'>-1</span> <span class='minus op'>-</span> <span class='rubyid_length identifier id'>length</span>
+  <span class='comment val'># Get the keys to delete from the hash</span>
+  <span class='rubyid_keys identifier id'>keys</span> <span class='assign token'>=</span> <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_range identifier id'>range</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='rubyid_range_stop identifier id'>range_stop</span><span class='rparen token'>)</span>
+  <span class='comment val'># Remove the keys from the index</span>
+  <span class='rubyid_@index ivar id'>@index</span><span class='dot token'>.</span><span class='rubyid_delete_by_rank identifier id'>delete_by_rank</span><span class='lparen token'>(</span><span class='integer val'>0</span><span class='comma token'>,</span> <span class='rubyid_range_stop identifier id'>range_stop</span><span class='rparen token'>)</span>
+
+  <span class='comment val'># Remove the values from the hash</span>
+  <span class='rubyid_multi identifier id'>multi</span> <span class='rubyid_do do kw'>do</span>
+    <span class='rubyid_keys identifier id'>keys</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_key identifier id'>key</span><span class='bitor op'>|</span>
+      <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_delete identifier id'>delete</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+    <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_self self kw'>self</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update</strong>(key, value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Update an existing key without changing the score.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 38</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_update identifier id'>update</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+    <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_set identifier id'>set</span><span class='lparen token'>(</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_raise identifier id'>raise</span> <span class='rubyid_ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Cannot update nonexistent key: #{key}&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="values_at-instance_method">
+  
+    - (<tt>Array</tt>) <strong>values_at</strong>(*keys) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Retrieve the values for the specified keys.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 191</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_values_at identifier id'>values_at</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rubyid_keys identifier id'>keys</span><span class='rparen token'>)</span>
+  <span class='rubyid_@hash ivar id'>@hash</span><span class='dot token'>.</span><span class='rubyid_values_at identifier id'>values_at</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rubyid_keys identifier id'>keys</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="values_by_range-instance_method">
+  
+    - (<tt>Object</tt>) <strong>values_by_range</strong>(start = nil, stop = nil, limit = nil, reverse = false) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/v0/sorted_hash.rb', line 177</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_values_by_range identifier id'>values_by_range</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_limit identifier id'>limit</span><span class='assign token'>=</span><span class='rubyid_nil nil kw'>nil</span><span class='comma token'>,</span> <span class='rubyid_reverse identifier id'>reverse</span><span class='assign token'>=</span><span class='rubyid_false false kw'>false</span><span class='rparen token'>)</span>
+  <span class='rubyid_keys_and_scores identifier id'>keys_and_scores</span> <span class='assign token'>=</span> <span class='rubyid_fields_by_range identifier id'>fields_by_range</span><span class='lparen token'>(</span><span class='rubyid_start identifier id'>start</span><span class='comma token'>,</span> <span class='rubyid_stop identifier id'>stop</span><span class='comma token'>,</span> <span class='rubyid_limit identifier id'>limit</span><span class='comma token'>,</span> <span class='rubyid_reverse identifier id'>reverse</span><span class='rparen token'>)</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_keys_and_scores identifier id'>keys_and_scores</span><span class='dot token'>.</span><span class='rubyid_size identifier id'>size</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
+    <span class='rubyid_keys identifier id'>keys</span><span class='comma token'>,</span> <span class='rubyid_scores identifier id'>scores</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+    <span class='rubyid_keys_and_scores identifier id'>keys_and_scores</span><span class='dot token'>.</span><span class='rubyid_each_slice identifier id'>each_slice</span><span class='lparen token'>(</span><span class='integer val'>2</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span><span class='bitor op'>|</span><span class='rubyid_key identifier id'>key</span><span class='comma token'>,</span> <span class='rubyid_score identifier id'>score</span><span class='bitor op'>|</span> <span class='rubyid_keys identifier id'>keys</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_key identifier id'>key</span><span class='semicolon token'>;</span> <span class='rubyid_scores identifier id'>scores</span> <span class='lshft op'>&lt;&lt;</span> <span class='rubyid_score identifier id'>score</span> <span class='rbrace token'>}</span>
+    <span class='rubyid_values identifier id'>values</span> <span class='assign token'>=</span> <span class='rubyid_values_at identifier id'>values_at</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rubyid_keys identifier id'>keys</span><span class='rparen token'>)</span>
+    <span class='rubyid_values identifier id'>values</span><span class='dot token'>.</span><span class='rubyid_zip identifier id'>zip</span><span class='lparen token'>(</span><span class='rubyid_scores identifier id'>scores</span><span class='rparen token'>)</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='rubyid_end end kw'>end</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon May 21 16:32:14 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Desire::Native::Set
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Desire.html" title="Desire (class)">Desire</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Native.html" title="Desire::Native (class)">Native</a></span></span>
+     &raquo; 
+    <span class="title">Set</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Desire::Native::Set
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Native.html" title="Desire::Native (class)">Desire::Native</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Native.html" title="Desire::Native (class)">Desire::Native</a></span></li>
+          
+            <li class="next">Desire::Native::Set</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Enumerable</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/desire/native/set.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A wrapper around the native Redis set type.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Native.html" title="Desire::Native (class)">Desire::Native</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Native.html#client-instance_method" title="Desire::Native#client (method)">#client</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../Key.html" title="Desire::Key (module)">Key</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Key.html#key-instance_method" title="Desire::Key#key (method)">#key</a></span></p>
+
+
+  
+    <h2>
+      Native Redis Commands
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sadd-instance_method" title="#sadd (instance method)">- (Object) <strong>sadd</strong> </a>
+    
+
+    
+      (also: #&lt;&lt;)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scard-instance_method" title="#scard (instance method)">- (Object) <strong>scard</strong> </a>
+    
+
+    
+      (also: #size)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sdiff-instance_method" title="#sdiff (instance method)">- (Object) <strong>sdiff</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sdiffstore-instance_method" title="#sdiffstore (instance method)">- (Object) <strong>sdiffstore</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sinter-instance_method" title="#sinter (instance method)">- (Object) <strong>sinter</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sinterstore-instance_method" title="#sinterstore (instance method)">- (Object) <strong>sinterstore</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sismember-instance_method" title="#sismember (instance method)">- (Object) <strong>sismember</strong> </a>
+    
+
+    
+      (also: #include?)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#smembers-instance_method" title="#smembers (instance method)">- (Object) <strong>smembers</strong> </a>
+    
+
+    
+      (also: #to_a)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#smove-instance_method" title="#smove (instance method)">- (Object) <strong>smove</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spop-instance_method" title="#spop (instance method)">- (Object) <strong>spop</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#srandmember-instance_method" title="#srandmember (instance method)">- (Object) <strong>srandmember</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#srem-instance_method" title="#srem (instance method)">- (Object) <strong>srem</strong> </a>
+    
+
+    
+      (also: #delete)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sunion-instance_method" title="#sunion (instance method)">- (Object) <strong>sunion</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sunionstore-instance_method" title="#sunionstore (instance method)">- (Object) <strong>sunionstore</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Augmentations
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">- (Object) <strong>each</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Yield each member of the set.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Native.html" title="Desire::Native (class)">Desire::Native</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Native.html#execute_prepared-instance_method" title="Desire::Native#execute_prepared (method)">#execute_prepared</a></span>, <span class='object_link'><a href="../Native.html#initialize-instance_method" title="Desire::Native#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Native.html#prepare-instance_method" title="Desire::Native#prepare (method)">#prepare</a></span>, <span class='object_link'><a href="../Native.html#redis_command-class_method" title="Desire::Native.redis_command (method)">redis_command</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Key.html" title="Desire::Key (module)">Key</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Key.html#del-instance_method" title="Desire::Key#del (method)">#del</a></span>, <span class='object_link'><a href="../Key.html#exists%3F-instance_method" title="Desire::Key#exists? (method)">#exists?</a></span>, <span class='object_link'><a href="../Key.html#expire-instance_method" title="Desire::Key#expire (method)">#expire</a></span>, <span class='object_link'><a href="../Key.html#expire_at-instance_method" title="Desire::Key#expire_at (method)">#expire_at</a></span>, <span class='object_link'><a href="../Key.html#persist-instance_method" title="Desire::Key#persist (method)">#persist</a></span>, <span class='object_link'><a href="../Key.html#ttl-instance_method" title="Desire::Key#ttl (method)">#ttl</a></span>, <span class='object_link'><a href="../Key.html#type-instance_method" title="Desire::Key#type (method)">#type</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../Native.html#initialize-instance_method" title="Desire::Native#initialize (method)">Desire::Native</a></span></p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="each-instance_method">
+  
+    - (<tt>Object</tt>) <strong>each</strong>(&amp;block) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Yield each member of the set.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 36</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='rubyid_block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='rubyid_to_a identifier id'>to_a</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='rubyid_block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sadd-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sadd</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='<<-instance_method'>&lt;&lt;</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 9</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sadd</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="scard-instance_method">
+  
+    - (<tt>Object</tt>) <strong>scard</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='size-instance_method'>size</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 10</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:scard</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sdiff-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sdiff</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 11</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sdiff</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sdiffstore-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sdiffstore</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 12</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sdiffstore</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sinter-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sinter</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 13</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sinter</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sinterstore-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sinterstore</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 14</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sinterstore</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sismember-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sismember</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='include?-instance_method'>include?</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 15</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sismember</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="smembers-instance_method">
+  
+    - (<tt>Object</tt>) <strong>smembers</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_a-instance_method'>to_a</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 16</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:smembers</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="smove-instance_method">
+  
+    - (<tt>Object</tt>) <strong>smove</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 17</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:smove</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="spop-instance_method">
+  
+    - (<tt>Object</tt>) <strong>spop</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 18</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:spop</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="srandmember-instance_method">
+  
+    - (<tt>Object</tt>) <strong>srandmember</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 19</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:srandmember</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="srem-instance_method">
+  
+    - (<tt>Object</tt>) <strong>srem</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='delete-instance_method'>delete</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 20</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:srem</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sunion-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sunion</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 21</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sunion</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sunionstore-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sunionstore</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native/set.rb', line 22</span>
+
+<span class='rubyid_redis_command identifier id'>redis_command</span> <span class='symbol val'>:sunionstore</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon May 21 16:32:12 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
