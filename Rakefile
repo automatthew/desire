@@ -21,13 +21,13 @@ end
 
 desc "run yardoc"
 task "doc" do
-	sh "yard --output docs"
+	sh "yard --output doc/yard"
 end
 
 desc "Update GitHub pages"
-task "doc:pages" => %w[ docs/ docs/.git doc ] do
+task "doc:pages" => %w[ doc/yard/ doc/yard/.git doc ] do
   rev = `git rev-parse --short HEAD`.strip
-  Dir.chdir 'docs' do
+  Dir.chdir 'doc/yard' do
     last_commit = `git log -n1 --pretty=oneline`.strip
     message = "rebuild pages from #{rev}"
     result = last_commit =~ /#{message}/
@@ -50,14 +50,12 @@ task "doc:pages" => %w[ docs/ docs/.git doc ] do
   puts "http://spire-io.github.com/desire/"
 end
 
-file 'docs/' do |f|
-  Dir.mkdir(f.name) if !File.exists?(f.name)
-end
+directory "doc/yard"
 
 # Update the pages/ directory clone
-file 'docs/.git' => ['docs/', '.git/refs/heads/gh-pages'] do |f|
-    sh "cd docs && git init -q && git remote add origin git@github.com:spire-io/desire.git" if !File.exist?(f.name)
-    sh "cd docs && git fetch -q origin && git reset -q --hard origin/gh-pages && touch ."
+file 'doc/yard/.git' => ['doc/yard/', '.git/refs/heads/gh-pages'] do |f|
+    sh "cd doc/yard && git init -q && git remote add origin git@github.com:spire-io/desire.git" if !File.exist?(f.name)
+    sh "cd doc/yard && git fetch -q origin && git reset -q --hard origin/gh-pages && touch ."
 end
 
 
