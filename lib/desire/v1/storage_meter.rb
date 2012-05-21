@@ -14,7 +14,7 @@ class Desire
   class StorageMeter
 
 
-    attr_reader :collector_key, :collection
+    attr_reader :client, :collector_key, :collection, :prepared
 
     # @param [Redis] client Duck typed to redis-rb 2.2.2
     # @param [#to_s] base_key Base key, to be used as a prefix for internally managed keys
@@ -24,6 +24,8 @@ class Desire
       @storage_meter = Native::Hash.new(client, @base_key)
       @total_key = "total"
 
+      @prepared = []
+
       @collector_key = "#{@base_key}.meters"
       @collector = V0::Collector.new(client, @collector_key) do |subkey|
         zset = Native::SortedSet.new(client, subkey)
@@ -31,8 +33,19 @@ class Desire
       end
     end
 
+    def flush(kind=:pipelined)
+      client.send(kind) do
+        @storage_meter.execute_prepared
+        prepared.each do |wrapper|
+          wrapper.flush
+        end
+      end
+    end
+
     def incrby(bytes)
-      @storage_meter.hincrby(@total_key, bytes)
+      @storage_meter.prepare do
+        @storage_meter.hincrby(@total_key, bytes)
+      end
     end
 
     def total
@@ -44,7 +57,9 @@ class Desire
     end
 
     def [](key)
-      @collector.get(key)
+      key_meter = @collector.get(key)
+      prepared << key_meter
+      key_meter
     end
 
     # expensive!
@@ -63,16 +78,25 @@ class Desire
       @total_key = "total"
     end
 
+    def flush
+      @key_meter.execute_prepared
+    end
+
     def update(subkey, bytes)
-      key_meter.zadd(bytes, subkey)
-      key_meter.zincrby(bytes, @total_key)
+      key_meter.prepare do
+        key_meter.zadd(bytes, subkey)
+        key_meter.zincrby(bytes, @total_key)
+      end
       storage_meter.incrby(bytes)
     end
 
     def delete(subkey)
       bytes = key_meter.zscore(subkey).to_i
-      key_meter.zrem(subkey)
-      key_meter.zincrby(-bytes, @total_key)
+
+      key_meter.prepare do
+        key_meter.zrem(subkey)
+        key_meter.zincrby(-bytes, @total_key)
+      end
       storage_meter.incrby(-bytes)
     end
 

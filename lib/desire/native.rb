@@ -19,11 +19,29 @@ class Desire
       end
       class_eval <<-EVAL, __FILE__, __LINE__ + 1
         def #{name}(*args, &block)
-          client.#{name}(key, *args, &block)
+          if @prepare
+            @prepared_commands << [:#{name}, key, *args]
+          else
+            client.#{name}(key, *args, &block)
+          end
         end
         #{extra}
       EVAL
 
+    end
+
+    def prepare(&block)
+      # NOT THREADSAFE
+      @prepare = true
+      yield
+      @prepare = false
+    end
+
+    def execute_prepared
+      @prepared_commands.each do |command|
+        client.send(*command)
+      end
+      @prepared_commands.clear
     end
 
     attr_reader :client
@@ -33,6 +51,7 @@ class Desire
     def initialize(client, key)
       @client = client
       @key = key
+      @prepared_commands = []
     end
 
   end

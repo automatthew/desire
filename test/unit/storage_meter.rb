@@ -1,3 +1,5 @@
+#require "redis"
+#client = Redis.new
 client = MockRedis.new
 
 describe "StorageMeter" do
@@ -41,6 +43,7 @@ describe "StorageMeter" do
       specify "#update sets a score in the sorted set and increments the totals" do
         @key_meter.update("subkey1", 32)
         @key_meter.update("subkey2", 64)
+        @meter.flush
 
         array = client.zrange(@key_meter_key, 0, -1, :withscores => true)
         Hash[*array].should == {"total" => "96", "subkey1" => "32", "subkey2" => "64"}
@@ -52,17 +55,21 @@ describe "StorageMeter" do
       specify "#delete retrieves the score, zrems the item, and decrements meters" do
         @key_meter.update("subkey1", 32)
         @key_meter.update("subkey2", 64)
+        @meter.flush
 
         @key_meter.delete("subkey2")
+        @meter.flush
 
         array = client.zrange(@key_meter_key, 0, -1, :withscores => true)
         Hash[*array].should == {"total" => "32", "subkey1" => "32"}
         client.hget("account_key", "total").should == "32"
+        client.zscore(@key_meter_key, "subkey2").should == nil
       end
 
       specify "#total retrieves the current total" do
         @key_meter.update("subkey1", 32)
         @key_meter.update("subkey2", 64)
+        @meter.flush
 
         @key_meter.total.should == 96
       end
@@ -81,7 +88,9 @@ describe "StorageMeter" do
       @meter["resource2"].update("subkey1", 100)
       @meter["resource2"].update("subkey2", 100)
       @meter["resource2"].update("subkey3", 100)
+      @meter.flush
       @meter["resource2"].delete("subkey1")
+      @meter.flush
 
       @meter.total.should == 500
     end
@@ -94,6 +103,7 @@ describe "StorageMeter" do
       @meter["resource2"].update("subkey1", 10)
       @meter["resource2"].update("subkey2", 10)
       @meter["resource2"].update("subkey3", 10)
+      @meter.flush
 
       @meter.subtotal("resource2").should == 30
     end
