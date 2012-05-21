@@ -9,12 +9,16 @@ describe "Desire::Collector" do
 
   describe "Instantiation" do
 
-    specify "does not use redis or the collection class" do
-      Desire::Collector.new(mock("redis"), mock("desire class"), "namespace")
+    specify "does not use redis or evaluate the block" do
+      Desire::Collector.new(mock("redis"), "namespace") do |subkey|
+        raise "This should not run"
+      end
     end
 
     specify "has methods for retrieving the redis keys it uses" do
-      collector = Desire::Collector.new(mock("redis"), mock("desire class"), "namespace")
+      collector = Desire::Collector.new(mock("redis"), "namespace") do |subkey|
+        raise "This should not run"
+      end
       collector.index_key.should == "namespace.index"
     end
 
@@ -23,7 +27,9 @@ describe "Desire::Collector" do
   describe "Usage" do
     before(:each) do
       client.flushall
-      @collector = Desire::Collector.new(client, TestClass, "base")
+      @collector = Desire::Collector.new(client, "base") do |subkey|
+        TestClass.new(client, subkey)
+      end
       @index_key = @collector.index_key
     end
 

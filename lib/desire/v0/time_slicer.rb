@@ -14,7 +14,9 @@ class Desire
       def initialize(client, klass, base_key, duration=:day)
         @base_key = base_key
         @client = client
-        @collector = Collector.new(client, klass, base_key)
+        @collector = Collector.new(client, base_key) do |subkey|
+          klass.new(@client, subkey)
+        end
         case duration
         when :month
           @format_string = '%Y-%m'

@@ -13,6 +13,7 @@ require "desire/native/sorted_set"
 
 
 require "desire/v0/composites"
+require "desire/v1/composites"
 
 
 
@@ -56,7 +57,7 @@ class Desire
 
     # Composites
     :sorted_hash => Desire::SortedHash,
-    :collector => Desire::Collector,
+    #:collector => Desire::Collector,
     :time_slicer => Desire::TimeSlicer,
   }.each do |name, klass|
     class_eval <<-EVAL, __FILE__, __LINE__ + 1
