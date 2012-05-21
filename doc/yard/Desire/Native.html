@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Desire::Native
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (N)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Desire.html" title="Desire (class)">Desire</a></span></span>
+     &raquo; 
+    <span class="title">Native</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Desire::Native
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Desire::Native</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Key.html" title="Desire::Key (module)">Key</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/desire/native.rb<span class="defines">,<br />
+  lib/desire/native/set.rb,<br /> lib/desire/native/hash.rb,<br /> lib/desire/native/list.rb,<br /> lib/desire/native/sorted_set.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Base class for wrappers representing the native Redis types.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Native/Hash.html" title="Desire::Native::Hash (class)">Hash</a></span>, <span class='object_link'><a href="Native/List.html" title="Desire::Native::List (class)">List</a></span>, <span class='object_link'><a href="Native/Set.html" title="Desire::Native::Set (class)">Set</a></span>, <span class='object_link'><a href="Native/SortedSet.html" title="Desire::Native::SortedSet (class)">SortedSet</a></span></p>
+</div>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Native/Hash.html" title="Desire::Native::Hash (class)">Hash</a></span>, <span class='object_link'><a href="Native/List.html" title="Desire::Native::List (class)">List</a></span>, <span class='object_link'><a href="Native/Set.html" title="Desire::Native::Set (class)">Set</a></span>, <span class='object_link'><a href="Native/SortedSet.html" title="Desire::Native::SortedSet (class)">SortedSet</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client-instance_method" title="#client (instance method)">- (Object) <strong>client</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute client.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="Key.html" title="Desire::Key (module)">Key</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Key.html#key-instance_method" title="Desire::Key#key (method)">#key</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#redis_command-class_method" title="redis_command (class method)">+ (Object) <strong>redis_command</strong>(name, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execute_prepared-instance_method" title="#execute_prepared (instance method)">- (Object) <strong>execute_prepared</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Native) <strong>initialize</strong>(client, key) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A new instance of Native.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare-instance_method" title="#prepare (instance method)">- (Object) <strong>prepare</strong>(&amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Key.html" title="Desire::Key (module)">Key</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Key.html#del-instance_method" title="Desire::Key#del (method)">#del</a></span>, <span class='object_link'><a href="Key.html#exists%3F-instance_method" title="Desire::Key#exists? (method)">#exists?</a></span>, <span class='object_link'><a href="Key.html#expire-instance_method" title="Desire::Key#expire (method)">#expire</a></span>, <span class='object_link'><a href="Key.html#expire_at-instance_method" title="Desire::Key#expire_at (method)">#expire_at</a></span>, <span class='object_link'><a href="Key.html#persist-instance_method" title="Desire::Key#persist (method)">#persist</a></span>, <span class='object_link'><a href="Key.html#ttl-instance_method" title="Desire::Key#ttl (method)">#ttl</a></span>, <span class='object_link'><a href="Key.html#type-instance_method" title="Desire::Key#type (method)">#type</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Desire::Native (class)">Native</a></span></tt>) <strong>initialize</strong>(client, key) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of Native
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>Redis</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+The key at which Redis commands will operate.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native.rb', line 52</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_client identifier id'>client</span><span class='comma token'>,</span> <span class='rubyid_key identifier id'>key</span><span class='rparen token'>)</span>
+  <span class='rubyid_@client ivar id'>@client</span> <span class='assign token'>=</span> <span class='rubyid_client identifier id'>client</span>
+  <span class='rubyid_@key ivar id'>@key</span> <span class='assign token'>=</span> <span class='rubyid_key identifier id'>key</span>
+  <span class='rubyid_@prepared_commands ivar id'>@prepared_commands</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="client-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="client-instance_method">
+  
+    - (<tt>Object</tt>) <strong>client</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native.rb', line 48</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_client identifier id'>client</span>
+  <span class='rubyid_@client ivar id'>@client</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="redis_command-class_method">
+  
+    + (<tt>Object</tt>) <strong>redis_command</strong>(name, options = {}) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native.rb', line 9</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_redis_command identifier id'>redis_command</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='comma token'>,</span> <span class='rubyid_options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='comment val'># Redis commands (for all types but strings) are prefixed with</span>
+  <span class='comment val'># a single character representing the type.  We provide method </span>
+  <span class='comment val'># aliases lacking those prefixes for convenience.</span>
+  <span class='rubyid_name identifier id'>name</span> <span class='assign token'>=</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_to_s identifier id'>to_s</span>
+  <span class='rubyid_if if kw'>if</span> <span class='rubyid_options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:alias</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='rubyid_false false kw'>false</span>
+    <span class='rubyid_extra identifier id'>extra</span> <span class='assign token'>=</span> <span class='string val'>&quot;&quot;</span>
+  <span class='rubyid_else else kw'>else</span>
+    <span class='rubyid_command_alias identifier id'>command_alias</span> <span class='assign token'>=</span> <span class='rubyid_name identifier id'>name</span><span class='dot token'>.</span><span class='rubyid_slice identifier id'>slice</span><span class='lparen token'>(</span><span class='float val'>1</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rparen token'>)</span>
+    <span class='rubyid_extra identifier id'>extra</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;alias_method :#{command_alias}, :#{name}&quot;</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_class_eval identifier id'>class_eval</span> <span class='string val'>&quot;def \#{name}(*args, &amp;block)\nif @prepare\n@prepared_commands &lt;&lt; [:\#{name}, key, *args]\nelse\nclient.\#{name}(key, *args, &amp;block)\nend\nend\n\#{extra}\n&quot;</span><span class='comma token'>,</span> <span class='rubyid___FILE__ __file__ kw'>__FILE__</span><span class='comma token'>,</span> <span class='rubyid___LINE__ __line__ kw'>__LINE__</span> <span class='plus op'>+</span> <span class='integer val'>1</span>
+
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="execute_prepared-instance_method">
+  
+    - (<tt>Object</tt>) <strong>execute_prepared</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native.rb', line 41</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_execute_prepared identifier id'>execute_prepared</span>
+  <span class='rubyid_@prepared_commands ivar id'>@prepared_commands</span><span class='dot token'>.</span><span class='rubyid_each identifier id'>each</span> <span class='rubyid_do do kw'>do</span> <span class='bitor op'>|</span><span class='rubyid_command identifier id'>command</span><span class='bitor op'>|</span>
+    <span class='rubyid_client identifier id'>client</span><span class='dot token'>.</span><span class='rubyid_send identifier id'>send</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rubyid_command identifier id'>command</span><span class='rparen token'>)</span>
+  <span class='rubyid_end end kw'>end</span>
+  <span class='rubyid_@prepared_commands ivar id'>@prepared_commands</span><span class='dot token'>.</span><span class='rubyid_clear identifier id'>clear</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare-instance_method">
+  
+    - (<tt>Object</tt>) <strong>prepare</strong>(&amp;block) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire/native.rb', line 34</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_prepare identifier id'>prepare</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='rubyid_block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='comment val'># NOT THREADSAFE</span>
+  <span class='rubyid_@prepare ivar id'>@prepare</span> <span class='assign token'>=</span> <span class='rubyid_true true kw'>true</span>
+  <span class='rubyid_yield yield kw'>yield</span>
+  <span class='rubyid_@prepare ivar id'>@prepare</span> <span class='assign token'>=</span> <span class='rubyid_false false kw'>false</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon May 21 16:15:33 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

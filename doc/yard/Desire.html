@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Desire
+  
+    &mdash; Documentation by YARD 0.8.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (D)</a> &raquo;
+    
+    
+    <span class="title">Desire</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Desire
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Desire</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Desire/Transaction.html" title="Desire::Transaction (module)">Transaction</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/desire.rb<span class="defines">,<br />
+  lib/desire/key.rb,<br /> lib/desire/native.rb,<br /> lib/desire/helpers.rb,<br /> lib/desire/composite.rb,<br /> lib/desire/native/set.rb,<br /> lib/desire/native/hash.rb,<br /> lib/desire/native/list.rb,<br /> lib/desire/transaction.rb,<br /> lib/desire/v0/collector.rb,<br /> lib/desire/v0/composites.rb,<br /> lib/desire/v0/sorted_hash.rb,<br /> lib/desire/v0/time_slicer.rb,<br /> lib/desire/v1/storage_meter.rb,<br /> lib/desire/native/sorted_set.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+A convenience wrapper for instantiating the actual Desire wrapper classes
+used in an application.
+</p>
+<p>
+Usage:
+</p>
+<pre class="code ruby"><code>
+  <span class='rubyid_desire identifier id'>desire</span> <span class='assign token'>=</span> <span class='rubyid_Desire constant id'>Desire</span><span class='dot token'>.</span><span class='rubyid_new identifier id'>new</span><span class='lparen token'>(</span><span class='rubyid_redis identifier id'>redis</span><span class='rparen token'>)</span>
+  <span class='rubyid_hash identifier id'>hash</span> <span class='assign token'>=</span> <span class='rubyid_desire identifier id'>desire</span><span class='dot token'>.</span><span class='rubyid_hash identifier id'>hash</span><span class='lparen token'>(</span><span class='string val'>&quot;redis_key_for_hash&quot;</span><span class='rparen token'>)</span>
+  <span class='rubyid_zset identifier id'>zset</span> <span class='assign token'>=</span> <span class='rubyid_desire identifier id'>desire</span><span class='dot token'>.</span><span class='rubyid_sorted_set identifier id'>sorted_set</span><span class='lparen token'>(</span><span class='string val'>&quot;some_other_key&quot;</span><span class='rparen token'>)</span>
+</code></pre>
+<p>
+The composite wrappers are versioned, but the classes considered stable can
+be accessed as constants in the Desire namespace:
+</p>
+<pre class="code ruby"><code>
+  <span class='rubyid_Desire constant id'>Desire</span><span class='colon2 op'>::</span><span class='rubyid_SortedHash constant id'>SortedHash</span> <span class='comment val'>#=&gt; Desire::V0::SortedHash</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Desire/Composite.html" title="Desire::Composite (module)">Composite</a></span>, <span class='object_link'><a href="Desire/Key.html" title="Desire::Key (module)">Key</a></span>, <span class='object_link'><a href="Desire/NumericHelpers.html" title="Desire::NumericHelpers (module)">NumericHelpers</a></span>, <span class='object_link'><a href="Desire/Transaction.html" title="Desire::Transaction (module)">Transaction</a></span>, <span class='object_link'><a href="Desire/V0.html" title="Desire::V0 (module)">V0</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Desire/KeyMeter.html" title="Desire::KeyMeter (class)">KeyMeter</a></span>, <span class='object_link'><a href="Desire/Native.html" title="Desire::Native (class)">Native</a></span>, <span class='object_link'><a href="Desire/StorageMeter.html" title="Desire::StorageMeter (class)">StorageMeter</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client-instance_method" title="#client (instance method)">- (Object) <strong>client</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Returns the value of attribute client.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_missing-class_method" title="const_missing (class method)">+ (Object) <strong>const_missing</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Look for missing classes under the current default convention version.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Desire) <strong>initialize</strong>(client, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The client should be an instance of redis-rb&#8217;s Redis class, or it
+should act like one.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Desire/Transaction.html" title="Desire::Transaction (module)">Transaction</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Desire/Transaction.html#discard-instance_method" title="Desire::Transaction#discard (method)">#discard</a></span>, <span class='object_link'><a href="Desire/Transaction.html#multi-instance_method" title="Desire::Transaction#multi (method)">#multi</a></span>, <span class='object_link'><a href="Desire/Transaction.html#unwatch-instance_method" title="Desire::Transaction#unwatch (method)">#unwatch</a></span>, <span class='object_link'><a href="Desire/Transaction.html#watch-instance_method" title="Desire::Transaction#watch (method)">#watch</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Desire (class)">Desire</a></span></tt>) <strong>initialize</strong>(client, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+The client should be an instance of redis-rb&#8217;s Redis class, or it
+should act like one.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire.rb', line 45</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='rubyid_client identifier id'>client</span><span class='comma token'>,</span> <span class='rubyid_options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='rubyid_@client ivar id'>@client</span> <span class='assign token'>=</span> <span class='rubyid_client identifier id'>client</span>
+  <span class='rubyid_@options ivar id'>@options</span> <span class='assign token'>=</span> <span class='rubyid_options identifier id'>options</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="client-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="client-instance_method">
+  
+    - (<tt>Object</tt>) <strong>client</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire.rb', line 41</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_client identifier id'>client</span>
+  <span class='rubyid_@client ivar id'>@client</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="const_missing-class_method">
+  
+    + (<tt>Object</tt>) <strong>const_missing</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>
+Look for missing classes under the current default convention version
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/desire.rb', line 37</span>
+
+<span class='rubyid_def def kw'>def</span> <span class='rubyid_self self kw'>self</span><span class='dot token'>.</span><span class='rubyid_const_missing identifier id'>const_missing</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='rubyid_V0 constant id'>V0</span><span class='dot token'>.</span><span class='rubyid_const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='rubyid_name identifier id'>name</span><span class='rparen token'>)</span>
+<span class='rubyid_end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Mon May 21 16:15:33 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.1 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
