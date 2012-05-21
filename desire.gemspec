@@ -11,7 +11,7 @@ end
 
 Gem::Specification.new do |s|
   s.name        = 'desire'
-  s.version     = "0.5.0"
+  s.version     = "0.5.1"
   s.summary     = "Ruby client for spire.io"
   s.description = <<-EOF
 		Wrappers for Redis.
@@ -27,6 +27,4 @@ Gem::Specification.new do |s|
 	s.add_development_dependency "rspec", ["~> 2.7"]
   s.add_development_dependency "mock_redis", ["~> 0.4"]
   s.add_development_dependency "yard", ["~> 0.8"]
-	#s.add_development_dependency "yard", ["~> 0.7"]
-	#s.add_development_dependency "redcarpet", ["~> 2.1.0"]
 end
