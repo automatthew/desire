@@ -174,8 +174,15 @@ class Desire
         @index.del
       end
 
-      def values_by_range(start=nil, stop=nil, limit=nil, reverse=false)
-        keys_and_scores = fields_by_range(start, stop, limit, reverse)
+
+      # Retrieve the values for the specified keys.
+      # @return [Array]
+      def values_at(*keys)
+        @hash.values_at(*keys)
+      end
+
+      def values_by_range(start=nil, stop=nil, limit=nil)
+        keys_and_scores = fields_by_range(start, stop, limit)
         if keys_and_scores.size > 0
           keys, scores = [], []
           keys_and_scores.each_slice(2) {|key, score| keys << key; scores << score }
@@ -184,24 +191,23 @@ class Desire
         else
           []
         end
-      end
+      end 
 
-      # Retrieve the values for the specified keys.
-      # @return [Array]
-      def values_at(*keys)
-        @hash.values_at(*keys)
-      end
-
-      # Retrieve the keys for elements with scores in the specified range.
-      # @return [Array]
-      def fields_by_range(start=nil, stop=nil, limit=nil, reverse=false)
+      def fields_by_range(start=nil, stop=nil, limit=nil)
+        reverse = (start == nil)
         start = start ? "(#{start}" : '-inf'
-        stop = stop ? "#{stop}" : "+inf"
+        stop = stop ? "(#{stop}" : "+inf"
         options = limit ? {:limit => [0, limit]} : {}
         options[:withscores] = true
-        options[:reverse] = reverse
-        @index.range_by_score(start, stop, options)
+        if reverse
+          @index.zrevrangebyscore(stop, start, options)
+        else
+          @index.zrangebyscore(start, stop, options)
+        end
       end
+
+
+
 
       ## TODO: something to verify that the ZSET and HASH are in sync
       #def consistency_check
