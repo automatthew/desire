@@ -40,7 +40,7 @@ class Desire
 
       # @return [Array] all members
       def members
-        client.range(key, 0, -1)
+        client.zrange(key, 0, -1)
       end
 
       # @param [Hash] options options to pass to the redis command
