@@ -50,6 +50,22 @@ describe "StorageMeter" do
         client.hget("account_key", "total").should == "96"
       end
 
+      specify "#update increments the subtotal appropriately over repeats" do
+        @key_meter.update("subkey1", 32)
+        # TODO: make StorageMeter smart about multiple updates of 
+        # the same subkey before flushing
+        @meter.flush
+
+        @key_meter.update("subkey1", 64)
+        @meter.flush
+
+        @key_meter.update("subkey1", 12)
+        @meter.flush
+
+        @meter.total.should == 12
+        @key_meter.total.should == 12
+      end
+
       specify "#delete does something smart if the subkey does not exist"
 
       specify "#delete retrieves the score, zrems the item, and decrements meters" do

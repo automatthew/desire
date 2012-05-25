@@ -13,7 +13,6 @@ require "desire/native/sorted_set"
 
 
 require "desire/v0/composites"
-require "desire/v1/composites"
 
 
 

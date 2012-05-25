@@ -83,11 +83,13 @@ class Desire
     end
 
     def update(subkey, bytes)
+      existing_bytes = key_meter.zscore(subkey).to_i
+      delta = bytes - existing_bytes
       key_meter.prepare do
         key_meter.zadd(bytes, subkey)
-        key_meter.zincrby(bytes, @total_key)
+        key_meter.zincrby(delta, @total_key)
       end
-      storage_meter.incrby(bytes)
+      storage_meter.incrby(delta)
     end
 
     def delete(subkey)
@@ -102,6 +104,12 @@ class Desire
 
     def total
       key_meter.zscore(@total_key).to_i
+    end
+
+    def clear
+      # get subtotal
+      # reduce total by the subtotal
+      # delete the keymeter
     end
 
   end
