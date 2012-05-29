@@ -44,7 +44,7 @@ class Desire
       @prepared_commands.clear
     end
 
-    attr_reader :client
+    attr_reader :client, :prepared_commands
 
     # @param [Redis] client
     # @param [String] key The key at which Redis commands will operate.

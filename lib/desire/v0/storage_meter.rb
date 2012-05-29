@@ -34,12 +34,19 @@ class Desire
     end
 
     def flush(kind=:pipelined)
-      client.send(kind) do
-        @storage_meter.execute_prepared
-        prepared.each do |wrapper|
-          wrapper.flush
+      if needs_flushing
+        client.send(kind) do
+          @storage_meter.execute_prepared
+          prepared.each do |wrapper|
+            wrapper.flush
+          end
         end
+        @needs_flushing = false
       end
+    end
+
+    def needs_flushing
+      @needs_flushing || @prepared.size > 0
     end
 
     def incrby(bytes)
@@ -107,9 +114,9 @@ class Desire
     end
 
     def clear
-      # get subtotal
-      # reduce total by the subtotal
-      # delete the keymeter
+      bytes = total
+      storage_meter.incrby(-bytes)
+      key_meter.del
     end
 
   end

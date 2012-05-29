@@ -90,6 +90,19 @@ describe "StorageMeter" do
         @key_meter.total.should == 96
       end
 
+      specify "#clear decrs the storage_meter and dels the key_meter" do
+        @meter["key1"].update("subkey", 32)
+        @meter["key2"].update("subkey", 64)
+        @meter.flush
+
+        @meter["key1"].clear
+        @meter.flush
+
+        @meter.total.should == 64
+        client.exists("account_key.meters.key1").should be_false
+        client.exists("account_key.meters.key2").should be_true
+      end
+
     end
 
     specify "#total is 0 if nothing has been metered" do

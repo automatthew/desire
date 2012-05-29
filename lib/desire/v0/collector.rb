@@ -2,6 +2,7 @@ class Desire
   module V0
 
     class Collector
+      # TODO implement #remove
       include Enumerable
       include Composite
 
