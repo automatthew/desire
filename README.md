@@ -10,6 +10,9 @@ Desire currently does not wrap the PUB/SUB commands for a number of reasons:
 
 That last reason also explains the lack of BLPOP and its pals in Desire::Native::List.
 
+[License](LICENSE)
+[test](test/setup.rb)
+
 ## Overview
 
 You can instantiate Desire wrappers directly:
